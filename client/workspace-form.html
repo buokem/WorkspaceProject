@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace Listing</title>
+    <link rel="stylesheet" href="./css/workspace-form.css" />
+</head>
+
+<body>
+    <div class="header">Workspace Create and Edit Page</div>
+
+    <div class="main-container">
+        <form class="form">
+            <div class="form-left">
+                <div class="section-title">
+                    <h2>Workspace Listing</h2>
+                    <hr />
+                </div>
+                <label>Workspace Name</label>
+                <input type="text" />
+                <label>Workspace Description</label>
+                <input type="text" />
+
+
+                <div class="row">
+                    <div>
+                        <label>Workspace Type</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>Workspace Capacity</label>
+                        <input type="text" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <label>Workspace Price</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>Workspace Size</label>
+                        <input type="text" />
+                    </div>
+                </div>
+
+                <div class="property-size-wrapper">
+                    <label>Workspace Lease Term</label>
+                    <input type="text" />
+                </div>
+                <div class="checkboxes">
+                    <label><input type="checkbox" /> Projector</label>
+                    <label><input type="checkbox" /> Speaker</label>
+                    <label><input type="checkbox" /> Smoking</label>
+                    <label><input type="checkbox" /> Heater</label>
+                    <label><input type="checkbox" /> Available</label>
+                </div>
+            </div>
+
+            <div class="form-right">
+                <button type="submit" class="submit-btn">Add/Submit</button>
+
+                <div class="image-preview" id="preview">Preview</div>
+                <input type="file" id="imageInput" />
+                <button type="button" class="add-btn" onclick="addImage()">Add</button>
+
+                <div class="thumbnail-row">
+                    <div class="thumb-box"></div>
+                    <div class="thumb-box"></div>
+                    <div class="thumb-box"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="./js/workspace-form.js"></script>
+</body>
+
+</html>
