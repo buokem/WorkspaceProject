@@ -1,0 +1,404 @@
+[
+    {
+        "workspace_id": 1,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 1,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 2,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 2,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 2,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 2,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 3,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 4,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 5,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 5,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 5,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 5,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 6,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 6,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 7,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 7,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 7,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 7,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 8,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 8,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 8,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 9,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 9,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 9,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 10,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 11,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 12,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 12,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 13,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 14,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 14,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 14,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 15,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 16,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 16,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 16,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 17,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 17,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 18,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 18,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 19,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 19,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 19,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 20,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 20,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 21,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 21,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 21,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 22,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 22,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 23,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 23,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 24,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 24,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 24,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 25,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 25,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 25,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 26,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 26,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 27,
+        "facility_id": 7,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 27,
+        "facility_id": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 27,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 28,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 29,
+        "facility_id": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 29,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 30,
+        "facility_id": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    }
+]

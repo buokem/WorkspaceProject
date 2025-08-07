@@ -1,0 +1,542 @@
+[
+    {
+        "workspace_id": 1,
+        "property_id": 1,
+        "name": "Workspace 1",
+        "size": 30,
+        "capacity": 3,
+        "rate": 65,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 1 is a stylish private room accommodating up to 3 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 39,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 2,
+        "property_id": 1,
+        "name": "Workspace 2",
+        "size": 70,
+        "capacity": 7,
+        "rate": 85,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 2 is a stylish private room accommodating up to 7 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 23,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 3,
+        "property_id": 1,
+        "name": "Workspace 3",
+        "size": 20,
+        "capacity": 2,
+        "rate": 60,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 3 is a stylish private room accommodating up to 2 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 36,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 4,
+        "property_id": 1,
+        "name": "Workspace 4",
+        "size": 50,
+        "capacity": 5,
+        "rate": 75,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 4 is a stylish private room accommodating up to 5 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 12,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 5,
+        "property_id": 2,
+        "name": "Workspace 5",
+        "size": 90,
+        "capacity": 9,
+        "rate": 95,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 5 is a stylish private room accommodating up to 9 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 45,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 6,
+        "property_id": 2,
+        "name": "Workspace 6",
+        "size": 20,
+        "capacity": 2,
+        "rate": 60,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 6 is a stylish private room accommodating up to 2 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 7,
+        "property_id": 2,
+        "name": "Workspace 7",
+        "size": 40,
+        "capacity": 4,
+        "rate": 70,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 7 is a stylish private room accommodating up to 4 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 2,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 8,
+        "property_id": 2,
+        "name": "Workspace 8",
+        "size": 110,
+        "capacity": 11,
+        "rate": 105,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 8 is an expansive open area designed to host up to 11 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 42,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 9,
+        "property_id": 2,
+        "name": "Workspace 9",
+        "size": 90,
+        "capacity": 9,
+        "rate": 95,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 9 is a stylish private room accommodating up to 9 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 14,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 10,
+        "property_id": 3,
+        "name": "Workspace 10",
+        "size": 50,
+        "capacity": 5,
+        "rate": 75,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 10 is a stylish private room accommodating up to 5 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 49,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 11,
+        "property_id": 3,
+        "name": "Workspace 11",
+        "size": 100,
+        "capacity": 10,
+        "rate": 100,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 11 is a stylish private room accommodating up to 10 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 18,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 12,
+        "property_id": 3,
+        "name": "Workspace 12",
+        "size": 130,
+        "capacity": 13,
+        "rate": 115,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 12 is an expansive open area designed to host up to 13 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 5,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 13,
+        "property_id": 3,
+        "name": "Workspace 13",
+        "size": 20,
+        "capacity": 2,
+        "rate": 60,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 13 is a stylish private room accommodating up to 2 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 14,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 14,
+        "property_id": 3,
+        "name": "Workspace 14",
+        "size": 130,
+        "capacity": 13,
+        "rate": 115,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 14 is an expansive open area designed to host up to 13 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 6,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 15,
+        "property_id": 3,
+        "name": "Workspace 15",
+        "size": 110,
+        "capacity": 11,
+        "rate": 105,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 15 is an expansive open area designed to host up to 11 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 24,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 16,
+        "property_id": 4,
+        "name": "Workspace 16",
+        "size": 60,
+        "capacity": 6,
+        "rate": 80,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 16 is a stylish private room accommodating up to 6 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 17,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 17,
+        "property_id": 4,
+        "name": "Workspace 17",
+        "size": 40,
+        "capacity": 4,
+        "rate": 70,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 17 is a stylish private room accommodating up to 4 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 29,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 18,
+        "property_id": 4,
+        "name": "Workspace 18",
+        "size": 150,
+        "capacity": 15,
+        "rate": 125,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 18 is an expansive open area designed to host up to 15 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 40,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 19,
+        "property_id": 4,
+        "name": "Workspace 19",
+        "size": 60,
+        "capacity": 6,
+        "rate": 80,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 19 is a stylish private room accommodating up to 6 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 23,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 20,
+        "property_id": 4,
+        "name": "Workspace 20",
+        "size": 30,
+        "capacity": 3,
+        "rate": 65,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 20 is a stylish private room accommodating up to 3 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 10,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 21,
+        "property_id": 4,
+        "name": "Workspace 21",
+        "size": 30,
+        "capacity": 3,
+        "rate": 65,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 21 is a stylish private room accommodating up to 3 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 23,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 22,
+        "property_id": 4,
+        "name": "Workspace 22",
+        "size": 130,
+        "capacity": 13,
+        "rate": 115,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 22 is an expansive open area designed to host up to 13 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 22,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 23,
+        "property_id": 5,
+        "name": "Workspace 23",
+        "size": 100,
+        "capacity": 10,
+        "rate": 100,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 23 is a stylish private room accommodating up to 10 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 13,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 24,
+        "property_id": 5,
+        "name": "Workspace 24",
+        "size": 130,
+        "capacity": 13,
+        "rate": 115,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 24 is an expansive open area designed to host up to 13 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 42,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 25,
+        "property_id": 5,
+        "name": "Workspace 25",
+        "size": 120,
+        "capacity": 12,
+        "rate": 110,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 25 is an expansive open area designed to host up to 12 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 17,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 26,
+        "property_id": 5,
+        "name": "Workspace 26",
+        "size": 90,
+        "capacity": 9,
+        "rate": 95,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 26 is a stylish private room accommodating up to 9 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 44,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 27,
+        "property_id": 5,
+        "name": "Workspace 27",
+        "size": 150,
+        "capacity": 15,
+        "rate": 125,
+        "pictures": [
+            "./pictures/BigWorkspace1.png",
+            "./pictures/BigWorkspace2.png",
+            "./pictures/BigWorkspace3.png"
+        ],
+        "description": "Workspace 27 is an expansive open area designed to host up to 15 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 43,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 28,
+        "property_id": 5,
+        "name": "Workspace 28",
+        "size": 70,
+        "capacity": 7,
+        "rate": 85,
+        "pictures": [
+            "./pictures/OpenWorkspace1.png",
+            "./pictures/OpenWorkspace2.png",
+            "./pictures/OpenWorkspace3.png"
+        ],
+        "description": "Workspace 28 is a stylish private room accommodating up to 7 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 41,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 29,
+        "property_id": 5,
+        "name": "Workspace 29",
+        "size": 90,
+        "capacity": 9,
+        "rate": 95,
+        "pictures": [
+            "./pictures/SmallWorkspace1.png",
+            "./pictures/SmallWorkspace2.png",
+            "./pictures/SmallWorkspace3.png"
+        ],
+        "description": "Workspace 29 is a stylish private room accommodating up to 9 people. It features plush ergonomic chairs arranged around a polished table, accent lighting that creates a focused ambiance, and fully soundproof walls. A high-resolution whiteboard and marker set spark creativity, while complimentary stationery and a mini refreshment station keep your team energized. Ideal for confidential meetings, brainstorming sessions, or focused individual work.",
+        "available": true,
+        "reviews": 4,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    },
+    {
+        "workspace_id": 30,
+        "property_id": 5,
+        "name": "Workspace 30",
+        "size": 130,
+        "capacity": 13,
+        "rate": 115,
+        "pictures": [
+            "./pictures/MedWorkspace1.png",
+            "./pictures/MedWorkspace2.png",
+            "./pictures/MedWorkspace3.png"
+        ],
+        "description": "Workspace 30 is an expansive open area designed to host up to 13 participants. Floor-to-ceiling windows flood the space with natural light, highlighting the sleek industrial-chic décor and polished concrete floors. Modular seating clusters encourage dynamic collaboration, while the built-in projector and surround-sound system delivers immersive presentations. This versatile venue is perfect for workshops, seminars, or creative hackathons.",
+        "available": true,
+        "reviews": 38,
+        "created_at": "2025-08-02T08:40:56.067478",
+        "updated_at": "2025-08-02T08:40:56.067478"
+    }
+]
