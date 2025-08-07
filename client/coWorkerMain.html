@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoWorker Page</title>
+    <link rel="stylesheet" href="/css/coworkermain.css">
+    <link rel="stylesheet" href="/css/general.css">
+</head>
+
+<body data-page="coWorkerMain">
+    <header>
+        <div class="profile-picture">
+            <span id="initial">K</span>
+        </div>
+
+        <div class="header-details">
+            <span id="coworker-name">Kachi.C</span>
+
+            <button class="rounded-button">Log Out</button>
+        </div>
+    </header>
+    <main class="main flex-row-100">
+        <div class="filter-tab">
+            <div class="scroll-holder">
+                <div class="search-holder">
+                    <label for="search-input" class="title-label">Search</label>
+                    <input type="search" name="search-input" id="search-input" placeholder="Name, Area"
+                        class="default-input">
+                </div>
+
+                <div class="filters">
+                    <div class="seat-options">
+                        <label for="seat-input" class="title-label">Seat Capacity</label>
+                        <input type="number" inputmode="numeric" pattern="[0-9]*" name="seat-input" id="seat-input"
+                            placeholder="No of persons" class="default-input">
+                    </div>
+                    <div class="filter-options">
+                        <label class="title-label">Filter Options</label>
+                        <div class="checkbox-holder flex-col-gap12">
+                            <input type="checkbox" name="public-transport-select" id="public-transport-select"
+                                value="2">
+                            <label for="public-transport-select" class="normal-label">Public Transport</label>
+                        </div>
+                        <div class="checkbox-holder flex-col-gap12">
+                            <input type="checkbox" name="smoking-select" id="smoking-select" value="4">
+                            <label for="smoking-select" class="normal-label">Smoking</label>
+                        </div>
+                        <div class="checkbox-holder flex-col-gap12">
+                            <input type="checkbox" name="available-select" id="available-select">
+                            <label for="available-select" class="normal-label">Available</label>
+                        </div>
+                        <div class="checkbox-holder flex-col-gap12">
+                            <input type="checkbox" name="parking-select" id="parking-select" value="1">
+                            <label for="parking-select" class="normal-label">Parking</label>
+                        </div>
+                    </div>
+                    <div class="price-options">
+                        <label class="title-label">Price range</label>
+                        <div class="price-filter">
+                            <div class="bars" id="bars"></div>
+                            <input type="range" class="slider" id="range" min="0" , max="300" value="30">
+                        </div>
+                        <div class="price-inputs">
+                            <div class="box-size-half">
+                                <label for="min-price" class="normal-label">Min:($)</label>
+                                <input type="number" name="min-price" id="min-price" inputmode="numeric"
+                                    class="default-input" value="0">
+                            </div>
+
+                            <div class="box-size-half">
+                                <label for="max-price" class="normal-label">Max:($)</label>
+                                <input type="number" name="max-price" id="max-price" inputmode="numeric"
+                                    class="default-input">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="size-options">
+                        <label for="" class="title-label">Floor area (sq)<sup>2</sup></label>
+                        <div class="size-inputs">
+                            <div class="box-size-half">
+                                <label for="min-size" class="normal-label">Min</label>
+                                <input type="number" name="min-size" id="min-size" inputmode="numeric"
+                                    class="default-input" value="0" min="0" max="100">
+                            </div>
+                            <div class="box-size-half">
+                                <label for="max-size" class="normal-label">Max</label>
+                                <input type="number" name="max-size" id="max-size" inputmode="numeric"
+                                    class="default-input" value="20" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lease-options">
+                        <label for="" class="title-label">Lease Period</label>
+                        <div class="lease-inputs">
+                            <label for="lease-select" class="normal-label">Duration (Hours)</label>
+                            <select id="lease-select" name="lease">
+                                <option value="" disabled selected>Choose a range…</option>
+                                <option value="1" data-min="0" data-max="4">Less than 4 hours</option>
+                                <option value="2" data-min="4" data-max="8">More than 4 hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-holder">
+                        <button type="button" class="normal-btn" id="filter-btn">Filter</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content" id="content">
+
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="logo-name">
+            WATCH<sub>spaces</sub>
+        </div>
+        <div class="footer-content">
+            <div class="newsletter">
+                <p class="footer-links">Subscribe to our newsletter</p>
+                <input type="text" name="news-letter-email" id="news-letter-email" placeholder="Enter email">
+            </div>
+            <p><a href="" class="footer-links">About</a></p>
+            <p><a href="" class="footer-links">Locations</a></p>
+            <p><a href="" class="footer-links">Contact Us</a></p>
+        </div>
+
+
+    </footer>
+
+    <script src="/js/app-component.js"></script>
+    <script src="/js/dataFilter.js"></script>
+</body>
+
+</html>
