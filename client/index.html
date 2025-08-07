@@ -1,11 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WatchSpaces</title>
+    <title>WATCH Spaces</title>
+    <link rel="stylesheet" href="./css/landingPage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
+    <header>
+
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Watch Spaces Logo">
+        </div>
+
+        <div class="buttons">
+            <button id="loginBtn">Log In</button>
+            <button id="signupBtn">Sign Up</button>
+        </div>
+
+    </header>
+
+    <section class="hero">
+        <div class="watch-logo">
+            <span class="watch-text">WATCH</span>
+            <span class="spaces-text">Spaces</span>
+        </div>
+        <p class="main-title">Find Your Next<br> Coworking Office</p>
+        <p class="sub-text">Find & Make your interior really stand out from the box</p>
+        <div class="search-bar">
+            <input type="text" placeholder=" ">
+            <button id="searchBtn">
+                <span class="search-text">Search Now</span>
+                <span class="search-icon">🔍</span>
+            </button>
+        </div>
+        <div class="workspace-text">
+            <div class="left-tag">We are the next gen<br>coworking platform</div>
+            <p class="desc">Premier provider of <br>office rental solutions for<br> businesses of all sizes<br>with flexible
+                plans
+            </p>
+        </div>
+        
+    </section>
+    <section class="location-cards">
+        <div class="location">
+            <div class="card-box"></div>
+            <h3>Market Street</h3>
+            <p>San Francisco</p>
+        </div>
+        <div class="location">
+            <div class="card-box"></div>
+            <h3>Lincoln Boulevard</h3>
+            <p>Los Angeles</p>
+        </div>
+        <div class="location">
+            <div class="card-box"></div>
+            <h3>Broadway</h3>
+            <p>New York</p>
+        </div>
+        <div class="location">
+            <div class="card-box"></div>
+            <h3>Broadway</h3>
+            <p>New York</p>
+        </div>
+    </section>
+    <hr class="divider">
+    <section class="browse-section">
+        <button class="browse-btn">Browse All</button>
+
+        <div class="watch-logo">
+            <span class="watch-text">WATCH</span>
+            <span class="spaces-text">Spaces</span>
+        </div>
+    </section>
+    <section class="footer-area">
+        <div class="newsletter">
+            <p>Subscribe to our<br> Newsletter</p>
+            <div class="subscribe-form">
+                <input type="email" id="newsletter" placeholder="Enter Email" />
+                <span class="arrow" id="subscribe-form">→</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Locations</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </section>
+
+    <script src="./js/landingPage.js"></script>
 </body>
+
 </html>
