@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Listing</title>
+    <link rel="stylesheet" href="./css/property-form.css" />
+</head>
+
+<body>
+    <div class="header">Property Create and Edit Page</div>
+
+    <div class="main-container">
+        <form class="form">
+            <div class="form-left">
+                <div class="section-title">
+                    <h2>Property Listing</h2>
+                    <hr />
+                </div>
+                <label>Property Name</label>
+                <input type="text" />
+
+                <div class="row">
+                    <div>
+                        <label>Street</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <input type="text" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <label>Province</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>Postal Code</label>
+                        <input type="text" />
+                    </div>
+                </div>
+
+                <div class="property-size-container">
+                    <div class="property-size-wrapper">
+                        <label>Property Size</label>
+                        <input type="text" />
+                    </div>
+                </div>
+                <div class="checkboxes">
+                    <label><input type="checkbox" /> Parking</label>
+                    <label><input type="checkbox" /> Public Transport</label>
+                    <label><input type="checkbox" /> Available</label>
+                </div>
+            </div>
+
+            <div class="form-right">
+                <button type="submit" class="submit-btn">Add/Submit</button>
+
+                <div class="image-preview" id="preview">Preview</div>
+                <input type="file" id="imageInput" />
+                <button type="button" class="add-btn" onclick="addImage()">Add</button>
+
+                <div class="thumbnail-row">
+                    <div class="thumb-box"></div>
+                    <div class="thumb-box"></div>
+                    <div class="thumb-box"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="./js/property-form.js"></script>
+</body>
+
+</html>
