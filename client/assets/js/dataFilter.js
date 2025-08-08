@@ -315,7 +315,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     })
 
-
     //api's
     //get coWorkerData
     async function fetchApi(API) {

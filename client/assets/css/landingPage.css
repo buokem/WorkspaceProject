@@ -188,6 +188,7 @@ header .buttons button {
     background-color: #e0e0e0;
     border: 1px solid #000;
     border-radius: 8px;
+    background-size: cover;
 }
 
 .location h3 {
