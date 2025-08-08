@@ -36,17 +36,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // LogInbtn
     document.getElementById("loginBtn").addEventListener("click", function () {
-        window.location.href = `/login`
+        window.location.href = `/authentication/login`
     });
 
     //Sign Up btn
     document.getElementById("signupBtn").addEventListener("click", function () {
-        window.location.href = `/login`
+        window.location.href = `/authentication/signup`
     });
 
     document.querySelector('.browse-btn').addEventListener("click", () => {
-        window.location.href = `/login`
-    })
+        window.location.href = `/authentication/login`
+    });
 
     document.getElementById("subscribe-form").addEventListener("click", function () {
         const emailInput = document.getElementById("newsletter").value.trim();

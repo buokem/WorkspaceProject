@@ -1,53 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign In / Sign Up</title>
-  <link rel="stylesheet" href="assets/css/signin-signup.css" />
+  <link rel="stylesheet" href="/css/signin-signup.css" />
 </head>
+
 <body>
 
-<div class="container">
-  <div class="form-container">
-    <div class="toggle-buttons">
-      <button id="sign-in-tab" class="toggle-button">Sign In</button>
-      <button id="sign-up-tab" class="toggle-button active">Sign Up</button>
+  <div class="container">
+    <div class="form-container">
+      <div class="toggle-buttons">
+        <button id="sign-in-tab" class="toggle-button">Sign In</button>
+        <button id="sign-up-tab" class="toggle-button active">Sign Up</button>
+      </div>
+
+      <!-- SIGN UP FORM -->
+      <form id="sign-up-form">
+        <h2>Let's get you started</h2>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="text" name="name" placeholder="Name" />
+        </div>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="email" name="email" placeholder="Email Address" />
+        </div>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="tel" name="phone" placeholder="Phone" />
+        </div>
+
+        <div class="input-group">
+          <span>X</span>
+          <select name="role">
+            <option value="" disabled selected>Select Role</option>
+            <option value="coworker">coworker</option>
+            <option value="owner">owner</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="password" name="password" placeholder="Password" autocomplete="current-password" required/>
+        </div>
+
+        <input type="submit" class="submit-button" value="Dive In">
+      </form>
+
+      <!-- SIGN IN FORM -->
+      <form id="sign-in-form">
+        <h2>Welcome</h2>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="email" name="email" placeholder="Email Address" />
+        </div>
+
+        <div class="input-group">
+          <span>X</span>
+          <input type="password" name="password" placeholder="Password" />
+        </div>
+
+        <input type="submit" class="submit-button" value="Continue">
+      </form>
     </div>
 
-    <!-- SIGN UP FORM -->
-    <div id="sign-up-form">
-      <h2>Let's get you started</h2>
-      <div class="input-group"><span>X</span><input type="text" placeholder="Name" /></div>
-      <div class="input-group"><span>X</span><input type="email" placeholder="Email Address" /></div>
-      <div class="input-group"><span>X</span><input type="tel" placeholder="Phone" /></div>
-      <div class="input-group">
-  <span>X</span>
-  <select>
-    <option value="" disabled selected>Select Role</option>
-    <option value="coworker">coworker</option>
-    <option value="owner">owner</option>
-  </select>
-</div>
-      <div class="input-group"><span>X</span><input type="password" placeholder="Password" /></div>
-      <button class="submit-button">Dive In</button>
-    </div>
+    <div class="illustration">
+      <img src="/images/placeholder-img.jpg" alt="" />
 
-    <!-- SIGN IN FORM -->
-    <div id="sign-in-form">
-      <h2>Welcome</h2>
-      <div class="input-group"><span>X</span><input type="email" placeholder="Email Address" /></div>
-      <div class="input-group"><span>X</span><input type="password" placeholder="Password" /></div>
-      <button class="submit-button">Continue</button>
     </div>
   </div>
 
-  <div class="illustration">
-    <img src="assets\images\placeholderimage.jpg" alt="placeholder" />
-
-  </div>
-</div>
-
-<script src="assets/js/signin-signup.js"></script>
+  <script src="/js/signin-signup.js"></script>
 </body>
+
 </html>
