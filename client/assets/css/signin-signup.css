@@ -1,0 +1,144 @@
+* { 
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 800px;
+  background: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.form-container {
+  flex: 1;
+  padding: 40px;
+}
+
+.illustration {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: #000;
+  border-left: 1px solid #ddd;
+}
+
+.toggle-buttons {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.toggle-button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.toggle-button.active {
+  background: #000;
+  color: white;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 35px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.input-group select {
+  margin-left: 25px; 
+  width: calc(100% - 25px); 
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none;
+}
+
+.input-group span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: gray;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Hide sign-in form by default */
+#sign-in-form {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    margin: 20px;
+  }
+
+  .illustration {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    font-size: 60px;
+    padding: 30px 0;
+  }
+
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .toggle-button {
+    font-size: 14px;
+    padding: 10px 0; 
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .submit-button {
+    font-size: 16px;
+  }
+}
