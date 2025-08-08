@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             console.log(`${e.target} is now at ${e.target.value}`)
         }
     }
+
     
 })
 
