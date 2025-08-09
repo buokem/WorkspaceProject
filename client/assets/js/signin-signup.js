@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const splitURL = window.location.href.split('/');
   let currentAuth = splitURL[splitURL.length - 1];
 
-  
+
 
   const signUpTab = document.getElementById('sign-up-tab');
   const signInTab = document.getElementById('sign-in-tab');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   signInTab.addEventListener('click', blockSignUpTab);
 
   //input validation
-  signUpForm.addEventListener('submit', (e) => {
+  signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -69,16 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log(data);
+    const response = await submitUser(data);
   });
 
-  signInForm.addEventListener('submit', (e)=>{
+  signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-
-
   })
 
 
@@ -98,10 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
     currentAuth = "login";
   }
 
+
+
+
   async function submitUser(data) {
-    try{
+    try {
       const response = await fetch(
-        `/api/auth/createUser`,
+        `/api/auth/createuser`,
         {
           method: "POST",
           headers: {
@@ -112,12 +114,51 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
       if (!response.ok) {
+        let error = await response.json();
+        error = error.error;
+        if (response.status === 409 || response.status === 400 || response.status === 500) {
+          alert(error)
+        }
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
+      const serverData = await response.json();
+
+      console.log('getting token...')
+      const token = serverData.token;
+      const role = serverData.user.role;
+
+      //save token  
+      console.log('saved token.....')
+      localStorage.setItem('watchSpaceToken', token);
+
+      //fetch pages based on their roles
+      if (role === "coworker") {
+        await fetch("/coworker", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        console.log('redirecting to coworker page')
+        return;
+      }
+
+      if(role === "owner"){
+        await fetch("/owner", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        console.log('redirecting to owner page')
+        return;
+      }
+
     }
-    catch(err){
+    catch (err) {
       console.error(err);
     }
   }

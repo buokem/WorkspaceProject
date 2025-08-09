@@ -15,6 +15,7 @@ const getCoWorkerByID = require('./routes/api/api-coWorkerView');
 const getDatabaseRouter = require('./routes/api/api-database');
 const getWorkspacesHomePage = require('./routes/api/api-homepage');
 const getSearchHomePage = require('./routes/api/api-search');
+const createUserRouter = require('./routes/api/api-createUser');
 
 
 //middleware to parseJSON
@@ -29,6 +30,7 @@ app.use('/api/database', getDatabaseRouter);
 app.use('/api/coworkerview', getCoWorkerByID);
 app.use('/api/homepage', getWorkspacesHomePage);
 app.use('/api/search', getSearchHomePage);
+app.use('/api/auth', createUserRouter)
 
 
 //middleware for pages
