@@ -69,15 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log(data);
-    const response = await submitUser(data);
+    await submitUser(data);
   });
 
-  signInForm.addEventListener('submit', (e) => {
+  signInForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
+    await loginUser(data)
   })
 
 
@@ -98,64 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-
-
   async function submitUser(data) {
     try {
-      const response = await fetch(
-        `/api/auth/createuser`,
-        {
-          method: "POST",
-          headers: {
-            'Content-Type': "application/json"
-          },
-          body: JSON.stringify(data)
-        }
-      );
+      const response = await fetchData(`/api/auth/createuser`, data);
 
       if (!response.ok) {
-        let error = await response.json();
-        error = error.error;
-        if (response.status === 409 || response.status === 400 || response.status === 500) {
-          alert(error)
-        }
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        await handleErrorResponse(response);
       }
 
-      const serverData = await response.json();
-
-      console.log('getting token...')
-      const token = serverData.token;
-      const role = serverData.user.role;
-
-      //save token  
-      console.log('saved token.....')
-      localStorage.setItem('watchSpaceToken', token);
+      const {role, token} = getAndStoreToken(response);
 
       //fetch pages based on their roles
-      if (role === "coworker") {
-        await fetch("/coworker", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        });
-        console.log('redirecting to coworker page')
-        return;
-      }
-
-      if(role === "owner"){
-        await fetch("/owner", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        });
-        console.log('redirecting to owner page')
-        return;
-      }
+      await redirectUserUsingRole(role, token);
 
     }
     catch (err) {
@@ -163,6 +119,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+
+  async function loginUser(data) {
+    try{
+      const response = await fetchData(`/api/auth/verifyuser`, data);
+
+      if(!response.ok){
+        handleErrorResponse(response);
+      }
+
+      const {role, token} = getAndStoreToken(response);
+
+      await redirectUserUsingRole(role, token);
+    }
+    catch(err){
+      console.error(err);
+    }
+  }
+
+  async function fetchData(route, data) {
+    await fetch(
+      route,
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
+  }
+
+  async function handleErrorResponse(response) {
+    const errorData = await response.json();
+    const errorMessage = errorData.error;
+
+    if ([400, 409, 500].includes(response.status)) {
+      alert(errorMessage);
+    }
+
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  async function getAndStoreToken(response) {
+    const serverData = await response.json();
+
+    //get token
+    console.log('getting token...')
+    const token = serverData.token;
+
+    //save token  
+    console.log('saved token.....')
+    localStorage.setItem('watchSpaceToken', token);
+
+    //return user role
+    return {
+      role :serverData.user.role, 
+      token
+    };
+  }
+
+  async function redirectUserUsingRole(role, token) {
+    //fetch pages based on their roles
+    if (role === "coworker") {
+      await fetch("/coworker", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      console.log('redirecting to coworker page')
+      return;
+    }
+
+    if (role === "owner") {
+      await fetch("/owner", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      console.log('redirecting to owner page');
+      return;
+    }
+  }
 })
 
 

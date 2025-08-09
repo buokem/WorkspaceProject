@@ -51,6 +51,7 @@ async function createUser(req, res) {
             createdAt
         };
 
+        //in a hurry so we do not hash passwords but will do in phase 2
         userArray.push(newUser);
         db.userData = userArray;
         const saved = await writeDb(db);
@@ -66,7 +67,7 @@ async function createUser(req, res) {
         const token = jwt.sign(
             { sub: id, email, role },
             process.env.JWT_SECRET,
-            { expiresIn: '15m', issuer: 'your-app' }
+            { expiresIn: '15m', issuer: 'watchspaces' }
         );
 
         return res.status(201).json({
