@@ -1169,6 +1169,15 @@
       "password": "ghettobaby",
       "id": "3558256c-c5b1-4f81-9711-5593fa89dc5f",
       "createdAt": "2025-08-10T01:00:47.753Z"
+    },
+    {
+      "name": "Ethan Dinh",
+      "email": "h.dinh063@mybvc.ca",
+      "phone": "4035551234",
+      "role": "owner",
+      "password": "secureownerpass",
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "createdAt": "2025-08-10T02:15:00.000Z"
     }
   ]
 }

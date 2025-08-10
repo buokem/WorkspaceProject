@@ -7,25 +7,27 @@ async function getProperty() {
   const { propertyData } = appData;
   console.log(propertyData);
 
-  const availableProperty = propertyData.filter(p => p.available);
+  const availableProperty = propertyData.filter((p) => p.available);
 
   const contentContainer = document.getElementById('content');
   const propertyCountEl = document.getElementById('property-count');
   propertyCountEl.innerText = `${availableProperty.length} Properties Available`;
 
-  availableProperty.forEach(property => {
+  availableProperty.forEach((property) => {
     const card = document.createElement('div');
     card.classList.add('card');
 
     card.innerHTML = `
       <div class="card-image">
-          <img src=${'ws.pictures[0]'} alt="">
+          <img src=${property.pictures[0]} alt="">
       </div>
       <div class="card-content">
           <div class="content-part-1">
               <div class="address-holder content-holder">
                   <p>${property.Address_line1}</p>
-                  <span class="extra-text">${property.city}, ${property.province}, ${property.postal_code}</span>
+                  <span class="extra-text">${property.city}, ${
+      property.province
+    }, ${property.postal_code}</span>
               </div>
           </div>
           <div class="content-part-2 justify-content-center">
@@ -38,7 +40,7 @@ async function getProperty() {
 
     card.querySelector('#view-detail-btn').addEventListener('click', () => {
       window.location.href = `property-view/${property.property_id}`;
-    })
+    });
 
     contentContainer.append(card);
   });
