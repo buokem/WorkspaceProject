@@ -151,7 +151,17 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         const id = url[url.length - 1];
 
         try {
-            const response = await fetch(`/api/coworkerview/${id}`);
+            const token = localStorage.getItem('watchSpaceToken');
+            const response = await fetch(
+                `/api/coworkerview/${id}`,
+                {
+                    method: "GET",
+                    headers:{
+                        'Content-Type': "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            );
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);

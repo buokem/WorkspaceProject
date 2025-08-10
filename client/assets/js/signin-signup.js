@@ -79,7 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    await loginUser(data)
+    console.log(data);
+
+    await loginUser(data);
   })
 
 
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await handleErrorResponse(response);
       }
 
-      const {role, token} = getAndStoreToken(response);
+      const {role, token} = await getAndStoreToken(response);
 
       //fetch pages based on their roles
       await redirectUserUsingRole(role, token);
@@ -128,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleErrorResponse(response);
       }
 
-      const {role, token} = getAndStoreToken(response);
+      const {role, token} = await getAndStoreToken(response);
 
       await redirectUserUsingRole(role, token);
     }
@@ -138,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function fetchData(route, data) {
-    await fetch(
+    const response = await fetch(
       route,
       {
         method: "POST",
@@ -148,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(data)
       }
     );
+    return response;
   }
 
   async function handleErrorResponse(response) {
@@ -169,42 +172,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = serverData.token;
 
     //save token  
-    console.log('saved token.....')
     localStorage.setItem('watchSpaceToken', token);
+    console.log('saved token.....')
 
     //return user role
+    console.log('returning token...')
     return {
       role :serverData.user.role, 
       token
     };
+    
   }
 
   async function redirectUserUsingRole(role, token) {
-    //fetch pages based on their roles
-    if (role === "coworker") {
-      await fetch("/coworker", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      });
-      console.log('redirecting to coworker page')
-      return;
-    }
+  
+  document.cookie = `token=${token}; Path=/; SameSite=Lax`;
 
-    if (role === "owner") {
-      await fetch("/owner", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      });
-      console.log('redirecting to owner page');
-      return;
-    }
+  if (role === "coworker") {
+    window.location.assign('/coworker');
+    return;
   }
+  if (role === "owner") {
+    window.location.assign('/owner');
+    return;
+  }
+}
+
 })
 
 

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-
+    //change this to get token
     let appData = await fetchApi('api/database');
 
     appData = JSON.parse(appData);
@@ -269,10 +269,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     
-    function getCoWorkerView(id){
-        window.location.href = `/coworkerview/${id}`;
+    async function getCoWorkerView(id){
+        await fetchApi(`/coworkerview/${id}`);
     }
-
 
     //event listeners
     filterTab.addEventListener('click', (e)=> {
@@ -319,7 +318,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     //get coWorkerData
     async function fetchApi(API) {
         try {
-            const response = await fetch(API);
+            const token = localStorage.getItem('watchSpaceToken');
+            const response = await fetchData(API, token);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -331,6 +331,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (err) {
             console.error('Fetch failed:', err.message);
         }
+    }
+
+    async function fetchData(route, token) {
+        const response = await fetch(
+            route,
+            {
+                method: "GET",
+                headers: {
+                    'Content-Type': "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+            }
+        );
+        return response
     }
 })
 
