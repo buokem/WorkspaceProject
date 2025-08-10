@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const propertyNameEl = document.querySelector('#property-name');
+  const viewWorkspaceBtn = document.querySelector('#view-workspace');
 
   const theProperty = await getPropertyById();
   propertyNameEl.innerText = theProperty.name;
@@ -34,11 +35,21 @@ document.addEventListener('DOMContentLoaded', async () => {
           `;
     tagParent.appendChild(div);
   });
+
+  viewWorkspaceBtn.addEventListener('click', () => {
+    const propertyId = getPropertyIdFromPath();
+    window.location.href = `/my-workspace/${propertyId}`;
+  })
 });
 
-async function getPropertyById() {
+function getPropertyIdFromPath() {
   const url = window.location.href.split('/');
   const id = url[url.length - 1];
+  return id;
+}
+
+async function getPropertyById() {
+  const id = getPropertyIdFromPath();
 
   try {
     const token = localStorage.getItem('watchSpaceToken');

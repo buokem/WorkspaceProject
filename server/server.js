@@ -19,6 +19,7 @@ const getAuthPageRouter = require('./routes/auth/auth')
 
 const getCoWorkerByID = require('./routes/api/api-coWorkerView');
 const getPropertyById = require('./routes/api/api-propertyById');
+const getPropertyWorkspace = require('./routes/api/api-propertyWorkspace');
 const getDatabaseRouter = require('./routes/api/api-database');
 const getWorkspacesHomePage = require('./routes/api/api-homepage');
 const getSearchHomePage = require('./routes/api/api-search');
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, './pictures')));
 app.use('/api/database', auth({roles:['coworker', 'owner']}), getDatabaseRouter);
 app.use('/api/coworkerview', auth({roles:['coworker']}), getCoWorkerByID);
 app.use('/api/property', auth({roles:['owner']}), getPropertyById);
+app.use('/api/property-workspace', auth({roles:['owner']}), getPropertyWorkspace);
 app.use('/api/homepage', getWorkspacesHomePage);
 app.use('/api/search', getSearchHomePage);
 app.use('/api/auth', createUserRouter);

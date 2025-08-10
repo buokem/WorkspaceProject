@@ -5,7 +5,7 @@ const getMyWorkSpacePage = require('../../controllers/owner-page/myworkspace-con
 
 const router = express.Router();
 
-router.get("/", getMyWorkSpacePage);
+router.get("/:id", getMyWorkSpacePage);
 
 
 module.exports = router;

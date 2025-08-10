@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const addPropertyBtn = document.querySelector('#add-property-btn');
+
+  addPropertyBtn.addEventListener('click', () => {
+    window.location.href = '/property-form'
+  })
+
   getProperty();
 });
 
@@ -31,14 +37,14 @@ async function getProperty() {
               </div>
           </div>
           <div class="content-part-2 justify-content-center">
-              <button class="rounded-button view-details" id="view-detail-btn">
+              <button class="rounded-button view-detail-btn">
                   View Details
               </button>
           </div>
       </div>
     `;
 
-    card.querySelector('#view-detail-btn').addEventListener('click', () => {
+    card.querySelector('.view-detail-btn').addEventListener('click', () => {
       window.location.href = `property-view/${property.property_id}`;
     });
 
