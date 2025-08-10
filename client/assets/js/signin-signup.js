@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const splitURL = window.location.href.split('/');
   let currentAuth = splitURL[splitURL.length - 1];
 
-  
+
 
   const signUpTab = document.getElementById('sign-up-tab');
   const signInTab = document.getElementById('sign-in-tab');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   signInTab.addEventListener('click', blockSignUpTab);
 
   //input validation
-  signUpForm.addEventListener('submit', (e) => {
+  signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -69,16 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log(data);
+    await submitUser(data);
   });
 
-  signInForm.addEventListener('submit', (e)=>{
+  signInForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
+    console.log(data);
 
+    await loginUser(data);
   })
 
 
@@ -98,29 +101,102 @@ document.addEventListener('DOMContentLoaded', () => {
     currentAuth = "login";
   }
 
+
   async function submitUser(data) {
-    try{
-      const response = await fetch(
-        `/api/auth/createUser`,
-        {
-          method: "POST",
-          headers: {
-            'Content-Type': "application/json"
-          },
-          body: JSON.stringify(data)
-        }
-      );
+    try {
+      const response = await fetchData(`/api/auth/createuser`, data);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        await handleErrorResponse(response);
       }
 
-      const data = await response.json();
+      const {role, token} = await getAndStoreToken(response);
+
+      //fetch pages based on their roles
+      await redirectUserUsingRole(role, token);
+
+    }
+    catch (err) {
+      console.error(err);
+    }
+  }
+
+
+  async function loginUser(data) {
+    try{
+      const response = await fetchData(`/api/auth/verifyuser`, data);
+
+      if(!response.ok){
+        handleErrorResponse(response);
+      }
+
+      const {role, token} = await getAndStoreToken(response);
+
+      await redirectUserUsingRole(role, token);
     }
     catch(err){
       console.error(err);
     }
   }
+
+  async function fetchData(route, data) {
+    const response = await fetch(
+      route,
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
+    return response;
+  }
+
+  async function handleErrorResponse(response) {
+    const errorData = await response.json();
+    const errorMessage = errorData.error;
+
+    if ([400, 409, 500].includes(response.status)) {
+      alert(errorMessage);
+    }
+
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  async function getAndStoreToken(response) {
+    const serverData = await response.json();
+
+    //get token
+    console.log('getting token...')
+    const token = serverData.token;
+
+    //save token  
+    localStorage.setItem('watchSpaceToken', token);
+    console.log('saved token.....')
+
+    //return user role
+    console.log('returning token...')
+    return {
+      role :serverData.user.role, 
+      token
+    };
+    
+  }
+
+  async function redirectUserUsingRole(role, token) {
+  
+  document.cookie = `token=${token}; Path=/; SameSite=Lax`;
+
+  if (role === "coworker") {
+    window.location.assign('/coworker');
+    return;
+  }
+  if (role === "owner") {
+    window.location.assign('/owner');
+    return;
+  }
+}
 
 })
 
