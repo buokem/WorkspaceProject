@@ -243,6 +243,10 @@ header{
     padding-bottom: var(--spacing-xs)
 }
 
+.justify-content-center {
+    justify-content: center !important;
+}
+
 .price-holder{
     font-size: var(--text-sm);
 }

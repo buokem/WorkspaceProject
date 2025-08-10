@@ -6,6 +6,11 @@ require('dotenv').config();
 
 //import files
 //routers
+const getOwnerPageRouter = require('./routes/owner-page/owner');
+const getPropertyFormRouter = require('./routes/owner-page/property-form');
+const getWorkspaceFormRouter = require('./routes/owner-page/workspace-form');
+const getPropertyViewRouter = require('./routes/owner-page/property-view');
+const getMyWorkSpaceRouter = require('./routes/owner-page/my-workspace');
 const getCoWorkerPageRouter = require('./routes/coworker-page/coWorker');
 const getCoWorkerViewPageRouter = require('./routes/coworker-page/coWorkerView');
 const getHomePageRouter = require('./routes/home-page/homePageRouter');
@@ -38,7 +43,11 @@ app.use('/', getHomePageRouter);
 
 app.use('/authentication', getAuthPageRouter);
 
-//app.use('/owner, getOwnerPageRouter);
+app.use('/owner', getOwnerPageRouter);
+app.use('/property-view', getPropertyViewRouter);
+app.use('/my-workspace', getMyWorkSpaceRouter);
+app.use('/property-form', getPropertyFormRouter);
+app.use('/workspace-form', getWorkspaceFormRouter);
 
 
 const PORT = process.env.PORT || 3000;
