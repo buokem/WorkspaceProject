@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     //change this to get token
-    let appData = await fetchApi('api/database');
+    let appData = await fetchApi('/api/database', "json");
 
     appData = JSON.parse(appData);
 
@@ -267,10 +267,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             parent.appendChild(div);
         })
     }
-
     
     async function getCoWorkerView(id){
-        await fetchApi(`/coworkerview/${id}`);
+        window.location.assign(`coworkerview/${id}`);
     }
 
     //event listeners
@@ -312,14 +311,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             const id = e.target.dataset.id;
             getCoWorkerView(id);
         }
-    })
+    });
 
     //api's
     //get coWorkerData
-    async function fetchApi(API) {
+    async function fetchApi(API, fileType) {
         try {
             const token = localStorage.getItem('watchSpaceToken');
-            const response = await fetchData(API, token);
+            const response = await fetchData(API, token, fileType);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -333,18 +332,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function fetchData(route, token) {
+    async function fetchData(route, token, fileType) {
+        const content = fileType === "html" ? "text/html" : "application/json";
+        console.log(content)
         const response = await fetch(
             route,
             {
                 method: "GET",
                 headers: {
-                    'Content-Type': "application/json",
+                    'Content-Type': content,
                     "Authorization": `Bearer ${token}`
                 },
             }
         );
-        return response
+        return response;
     }
 })
 
