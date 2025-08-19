@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches("#view-detail-btn")) {
-        //window.location.href = `property-view/${property.property_id}`;
+        window.location.href = `/workspace-view/${d.workspace_id}`;
         return;
       }
 

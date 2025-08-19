@@ -1,4 +1,5 @@
 const path = require('path');
+const crypto = require('crypto');
 const fs = require('fs').promises;
 
 async function createProperty(req, res) {
@@ -11,7 +12,7 @@ async function createProperty(req, res) {
         content = JSON.parse(content);
 
         //set propertyID using length of propertyData array
-        const propertyID = content.propertyData.length + 1;
+        const propertyID = crypto.randomUUID();
 
         //create array of pictures path
         const pictures = req.files.map(file => "/"+file.filename);

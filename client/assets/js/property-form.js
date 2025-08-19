@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 const typeValue = urlParams.get('type');
-const idValue = urlParams.get('id');
+const idValue = urlParams.get('ownerId');
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_NO_OF_FILES = 3;

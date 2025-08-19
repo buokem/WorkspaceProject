@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     async function getCoWorkerView(id){
-        window.location.assign(`coworkerview/${id}`);
+        window.location.assign(`workspace-view/${id}`);
     }
 
     //event listeners

@@ -3,7 +3,7 @@ const path = require('path');
 
 async function getPropertyById(req, res) {
   try {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
 
     const databaseFilePath = path.join(__dirname, "../../data/database.json");
     const rawContent = await fs.readFile(databaseFilePath, 'utf-8');

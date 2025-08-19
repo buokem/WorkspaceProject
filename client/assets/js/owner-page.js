@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const addPropertyBtn = document.querySelector('#add-property-btn');
-
-  addPropertyBtn.addEventListener('click', () => {
-    window.location.href = '/property-form'
-  })
-
   getProperty();
 
+  const idValue = getQueryParamId();
   document.getElementById('add-property').addEventListener('click', (e) => {
-    window.location.href = `/property-form?type=create`
+    window.location.href = `/property-form?type=create&ownerId=${idValue}`;
   });
 });
 
-async function getProperty() {
+function getQueryParamId() {
   const urlParams = new URLSearchParams(window.location.search);
   const idValue = urlParams.get('id');
+  return idValue;
+}
+
+async function getProperty() {
+  const idValue = getQueryParamId();
 
   const appData = await fetchApi(`api/getproperties/${idValue}`);
 
@@ -63,55 +63,57 @@ async function getProperty() {
     const ddMenu = card.querySelector('.dd-menu');
 
     card.addEventListener('click', async (e) => {
-      if (e.target.matches("#view-detail-btn")) {
+      if (e.target.matches('.view-detail-btn')) {
         window.location.href = `property-view/${property.property_id}`;
         return;
       }
 
-      if (e.target.matches("#option-control")) {
+      if (e.target.matches('#option-control')) {
         ddMenu.classList.toggle('hide');
         return;
       }
 
-      if (e.target.matches("#edit-btn")) {
+      if (e.target.matches('#edit-btn')) {
         const id = Number(e.target.dataset.id);
-        const propertyData = availableProperty.find(p => p.property_id === id);
+        const propertyData = availableProperty.find(
+          (p) => p.property_id === id,
+        );
         console.log(propertyData);
-        sessionStorage.setItem("propertyData", JSON.stringify(propertyData));
-        window.location.href = `/property-form?type=edit&id=${idValue}`
+        sessionStorage.setItem('propertyData', JSON.stringify(propertyData));
+        window.location.href = `/property-form?type=edit&id=${idValue}`;
       }
 
-      if (e.target.matches("#delete-btn")) {
+      if (e.target.matches('#delete-btn')) {
         const id = Number(e.target.dataset.id);
 
-        const confirmed = confirm("Are you sure you want to delete this?");
+        const confirmed = confirm('Are you sure you want to delete this?');
 
         if (confirmed) {
-          const res = await fetchApi('/api/createProperty', "DELETE", {id});
+          const res = await fetchApi('/api/createProperty', 'DELETE', { id });
 
-          console.log(res)
+          console.log(res);
 
-          if (res.message.toLowerCase().trim() === "delete successful"){
-            window.location.href = `/property-form?type=edit&id=${idValue}`
+          if (res.message.toLowerCase().trim() === 'delete successful') {
+            window.location.href = `/property-form?type=edit&id=${idValue}`;
           }
         }
       }
-    })
+    });
 
     contentContainer.append(card);
   });
 }
 
-async function fetchApi(API, method = "GET", body = null) {
+async function fetchApi(API, method = 'GET', body = null) {
   try {
     const options = {
       method,
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     };
 
-    if (method !== "GET" && body) {
+    if (method !== 'GET' && body) {
       options.body = JSON.stringify(body);
     }
 
@@ -123,6 +125,6 @@ async function fetchApi(API, method = "GET", body = null) {
 
     return await response.json();
   } catch (err) {
-    console.error("Fetch failed:", err.message);
+    console.error('Fetch failed:', err.message);
   }
 }

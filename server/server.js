@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, './pictures')));
 
 //middleware for api's
 app.use('/api/database', auth({roles:['coworker', 'owner']}), getDatabaseRouter);
-app.use('/api/coworkerview', auth({roles:['coworker']}), getCoWorkerByID);
+app.use('/api/coworkerview', auth({roles:['coworker', 'owner']}), getCoWorkerByID);
 app.use('/api/property', auth({roles:['owner']}), getPropertyById);
 app.use('/api/property-workspace', auth({roles:['owner']}), getPropertyWorkspace);
 app.use('/api/homepage', getWorkspacesHomePage);
@@ -64,7 +64,7 @@ app.use('/authentication', getAuthPageRouter);
 
 //coworker pages
 app.use('/coworker', auth({roles:['coworker']}), getCoWorkerPageRouter);
-app.use('/coworkerview', auth({roles:['coworker']}), getCoWorkerViewPageRouter);
+app.use('/workspace-view', auth({roles:['coworker', 'owner']}), getCoWorkerViewPageRouter);
 
 //owner pages
 app.use('/owner', auth({roles:['owner']}), getOwnerPageRouter);
