@@ -195,6 +195,7 @@ header{
     border-radius: var(--radius-md);
     overflow: hidden;
     padding: var(--spacing-xs);
+    position: relative;
 }
 
 .card-content{
@@ -206,6 +207,31 @@ header{
     width: 100%;
     aspect-ratio: 1.24 / 1;
     border-radius: var(--radius-sm);
+}
+
+.options{
+    position: absolute;
+    top: 16px;
+    right: 12px;
+}
+
+.dd-menu{
+    position: absolute;
+    right: 4px;
+}
+
+.dd-menu.hide{
+    display: none;
+}
+
+.edit-btn, .delete-btn{
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 12px;
+    margin-bottom: 4px;
+    border: 2px solid var(--color-gray-border);
+    font-family: var(--font-body);
+    font-weight: 500;
 }
 
 #coworker-name{

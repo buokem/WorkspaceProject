@@ -46,7 +46,7 @@ async function verifyUser(req, res){
 
         return res.status(201).json({
             message: 'Succesful LogIn',
-            user: {email, role},
+            user: {id ,email, role},
             token
         });
     }

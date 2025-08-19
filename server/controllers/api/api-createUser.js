@@ -51,7 +51,7 @@ async function createUser(req, res) {
             createdAt
         };
 
-        //in a hurry so we do not hash passwords but will do in phase 2
+        
         userArray.push(newUser);
         db.userData = userArray;
         const saved = await writeDb(db);

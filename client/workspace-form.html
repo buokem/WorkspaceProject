@@ -19,51 +19,51 @@
                     <hr />
                 </div>
                 <label>Workspace Name</label>
-                <input type="text" />
+                <input type="text" class="name" name="name" id="name"/>
                 <label>Workspace Description</label>
-                <input type="text" />
+                <input type="text" class="description" name="desc" id="desc"/>
 
 
                 <div class="row">
                     <div>
                         <label>Workspace Type</label>
-                        <input type="text" />
+                        <input type="text"/>
                     </div>
                     <div>
                         <label>Workspace Capacity</label>
-                        <input type="text" />
+                        <input type="text" class="seats" name="seats" id="capacity"/>
                     </div>
                 </div>
 
                 <div class="row">
                     <div>
                         <label>Workspace Price</label>
-                        <input type="text" />
+                        <input type="text" class="price" name="price" id="price"/>
                     </div>
                     <div>
                         <label>Workspace Size</label>
-                        <input type="text" />
+                        <input type="text" class="size" name="size" id="size"/>
                     </div>
                 </div>
 
                 <div class="property-size-wrapper">
                     <label>Workspace Lease Term</label>
-                    <input type="text" />
+                    <input type="text" class="lease" name="lease" id="lease"/>
                 </div>
                 <div class="checkboxes">
-                    <label><input type="checkbox" /> Projector</label>
-                    <label><input type="checkbox" /> Speaker</label>
-                    <label><input type="checkbox" /> Smoking</label>
-                    <label><input type="checkbox" /> Heater</label>
-                    <label><input type="checkbox" /> Available</label>
+                    <label><input type="checkbox" class="projector" name="projector" id="projector"/> Projector</label>
+                    <label><input type="checkbox" class="microphone" name="microphone" id="microphone"/> Microphone</label>
+                    <label><input type="checkbox" class="smoking" name="smoking" id="smoking"/> Smoking</label>
+                    <label><input type="checkbox" class="whiteboard" name="whiteboard" id="whiteboard"/> Whiteboard</label>
+                    <label><input type="checkbox" class="available" name="available" id="available"/> Available</label>
                 </div>
             </div>
 
             <div class="form-right">
-                <button type="submit" class="submit-btn">Add/Submit</button>
+                <button type="submit" class="submit-btn" id="submit-btn">Add/Submit</button>
 
                 <div class="image-preview" id="preview">Preview</div>
-                <input type="file" id="imageInput" />
+                <input type="file" id="imageInput" name="imageInput" multiple/>
                 <button type="button" class="add-btn" onclick="addImage()">Add</button>
 
                 <div class="thumbnail-row">

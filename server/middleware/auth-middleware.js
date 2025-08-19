@@ -11,7 +11,6 @@ function auth({ roles = [], redirectTo = '/authentication/login'}) {
     //return a middleware function
     return function (req, res, next) {
         try {
-            
             let token = null;
             //get request authorization header
             const authHeader = req.headers.authorization;

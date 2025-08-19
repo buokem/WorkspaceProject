@@ -181,7 +181,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  background-size: contain;
 }
 
 
@@ -212,6 +212,7 @@ body {
   border: 1px solid #999;
   border-radius: 8px;
   background-color: #dcdcdc;
+  background-size: contain;
 }
 
 @media (max-width:768px) {
