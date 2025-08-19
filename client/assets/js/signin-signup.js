@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await handleErrorResponse(response);
       }
 
-      const {role, token} = await getAndStoreToken(response);
+      const { role, token } = await getAndStoreToken(response);
 
       //fetch pages based on their roles
       await redirectUserUsingRole(role, token);
@@ -123,18 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   async function loginUser(data) {
-    try{
+    try {
       const response = await fetchData(`/api/auth/verifyuser`, data);
 
-      if(!response.ok){
+      if (!response.ok) {
         handleErrorResponse(response);
       }
 
-      const {role, token} = await getAndStoreToken(response);
+      const { role, token, id } = await getAndStoreToken(response);
 
-      await redirectUserUsingRole(role, token);
+      await redirectUserUsingRole(id, role, token);
     }
-    catch(err){
+    catch (err) {
       console.error(err);
     }
   }
@@ -178,25 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
     //return user role
     console.log('returning token...')
     return {
-      role :serverData.user.role, 
+      id: serverData.user.id,
+      role: serverData.user.role,
       token
     };
-    
+
   }
 
-  async function redirectUserUsingRole(role, token) {
-  
-  document.cookie = `token=${token}; Path=/; SameSite=Lax`;
+  async function redirectUserUsingRole(id, role, token) {
 
-  if (role === "coworker") {
-    window.location.assign('/coworker');
-    return;
+    document.cookie = `token=${token}; Path=/; SameSite=Lax`;
+
+    if (role === "coworker") {
+      window.location.assign('/coworker');
+      return;
+    }
+    if (role === "owner") {
+      console.log(role, id)
+      window.location.assign(`/owner?id=${id}`);
+      return;
+    }
   }
-  if (role === "owner") {
-    window.location.assign('/owner');
-    return;
-  }
-}
 
 })
 

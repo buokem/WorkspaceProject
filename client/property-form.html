@@ -16,43 +16,43 @@
             <div class="form-left">
                 <div class="section-title">
                     <h2>Property Listing</h2>
-                    <hr />
+                    <hr/>
                 </div>
-                <label>Property Name</label>
-                <input type="text" />
+                <label for="p-name">Property Name</label>
+                <input type="text" id="p-name" name="p-name"/>
 
                 <div class="row">
                     <div>
-                        <label>Street</label>
-                        <input type="text" />
+                        <label for="p-street">Street</label>
+                        <input type="text" id="p-street" name="p-street"/>
                     </div>
                     <div>
-                        <label>City</label>
-                        <input type="text" />
+                        <label for="p-city">City</label>
+                        <input type="text" id="p-city" name="p-city"/>
                     </div>
                 </div>
 
                 <div class="row">
                     <div>
-                        <label>Province</label>
-                        <input type="text" />
+                        <label for="p-province">Province</label>
+                        <input type="text" id="p-province" name="p-province"/>
                     </div>
                     <div>
-                        <label>Postal Code</label>
-                        <input type="text" />
+                        <label for="p-postal">Postal Code</label>
+                        <input type="text" id="p-postal" name="p-postal"/>
                     </div>
                 </div>
 
                 <div class="property-size-container">
                     <div class="property-size-wrapper">
-                        <label>Property Size</label>
-                        <input type="text" />
+                        <label for="p-size">Property Size</label>
+                        <input type="number" id="p-size" name="p-size"/>
                     </div>
                 </div>
                 <div class="checkboxes">
-                    <label><input type="checkbox" /> Parking</label>
-                    <label><input type="checkbox" /> Public Transport</label>
-                    <label><input type="checkbox" /> Available</label>
+                    <label><input type="checkbox" id="p-parking" name="p-parking"/> Parking</label>
+                    <label><input type="checkbox" id="p-transport" name="p-transport"/> Public Transport</label>
+                    <label><input type="checkbox" id="p-available" name="p-available"/> Available</label>
                 </div>
             </div>
 
@@ -60,9 +60,8 @@
                 <button type="submit" class="submit-btn">Add/Submit</button>
 
                 <div class="image-preview" id="preview">Preview</div>
-                <input type="file" id="imageInput" />
-                <button type="button" class="add-btn" onclick="addImage()">Add</button>
-
+                <input type="file" id="imageInput" name="imageInput" multiple/>
+                
                 <div class="thumbnail-row">
                     <div class="thumb-box"></div>
                     <div class="thumb-box"></div>

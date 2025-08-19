@@ -1,3 +1,6 @@
+
+const property_id = window.location.pathname.split('/')[2];
+
 document.addEventListener('DOMContentLoaded', async () => {
   const propertyNameEl = document.querySelector('#property-name');
   const viewWorkspaceBtn = document.querySelector('#view-workspace');
@@ -15,6 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       mainImage.style.backgroundImage = e.currentTarget.style.backgroundImage;
     });
   });
+
+  document.getElementById("view-workspace").addEventListener('click', async (e) => {
+    window.location.href = `/my-workspace/${property_id}`
+  })
 
   const tagParent = document.querySelector('.details-block .tag-holder');
 

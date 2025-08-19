@@ -10,7 +10,7 @@ async function getMyWorkspacePage(req, res) {
     catch(err){
         console.error("Error sending file: ", err);
         res.status(500).send("Server error");
-        console.error(err)
+        console.error(err);
     }
 }
 

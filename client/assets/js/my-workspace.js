@@ -1,47 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const addPropertyBtn = document.querySelector('#add-property-btn');
+const property_id = window.location.pathname.split("/")[2];
 
-  addPropertyBtn.addEventListener('click', () => {
-    window.location.href = '/property-form'
-  })
+document.addEventListener('DOMContentLoaded', async (e) => {
+  const data = await fetchApi(`/api/getworkspaces?propID=${property_id}`);
 
-  getProperty();
-
-  document.getElementById('add-property').addEventListener('click', (e) => {
-    window.location.href = `/property-form?type=create`
+  document.getElementById('add-workspace').addEventListener('click', (e) => {
+    window.location.href = `/workspace-form?type=create&id=${property_id}`
   });
-});
 
-async function getProperty() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const idValue = urlParams.get('id');
-
-  const appData = await fetchApi(`api/getproperties/${idValue}`);
-
-  const availableProperty = appData;
-  console.log(availableProperty);
+  console.log(data);
 
   const contentContainer = document.getElementById('content');
   const propertyCountEl = document.getElementById('property-count');
-  propertyCountEl.innerText = `${availableProperty.length} Properties Available`;
+  propertyCountEl.innerText = `${data.workspaces.length} Properties Available`;
 
-  availableProperty.forEach((property) => {
+  data.workspaces.forEach(d => {
     const card = document.createElement('div');
     card.classList.add('card');
 
     card.innerHTML = `
       <div class="card-image">
-          <img src=${property.pictures[0]} alt="">
+          <img src=${d.pictures[0]} alt="">
       </div>
       <div class="card-content">
           <div class="content-part-1">
               <div class="address-holder content-holder">
-                  <p>${property.Address_line1}</p>
-                  <span class="extra-text">${property.city}, ${property.province}, ${property.postal_code}</span>
+                  <p>${d.address}</p>
+                  <span class="extra-text">${d.city}, ${d.province}, ${d.postal_code}</span>
               </div>
           </div>
           <div class="content-part-2 justify-content-center">
-              <button class="rounded-button view-detail-btn">
+              <button class="rounded-button view-details" id="view-detail-btn">
                   View Details
               </button>
           </div>
@@ -54,8 +42,8 @@ async function getProperty() {
         </div>
         
         <ul class="dd-menu hide">
-          <li><button class="edit-btn" id="edit-btn" data-id=${property.property_id}>Edit</button></li>
-          <li><button class="delete-btn" id="delete-btn" data-id=${property.property_id}>Delete</button></li>
+          <li><button class="edit-btn" id="edit-btn" data-id=${d.workspace_id}>Edit</button></li>
+          <li><button class="delete-btn" id="delete-btn" data-id=${d.workspace_id}>Delete</button></li>
         </ul>
       </div>
     `;
@@ -64,7 +52,7 @@ async function getProperty() {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches("#view-detail-btn")) {
-        window.location.href = `property-view/${property.property_id}`;
+        //window.location.href = `property-view/${property.property_id}`;
         return;
       }
 
@@ -75,32 +63,31 @@ async function getProperty() {
 
       if (e.target.matches("#edit-btn")) {
         const id = Number(e.target.dataset.id);
-        const propertyData = availableProperty.find(p => p.property_id === id);
-        console.log(propertyData);
-        sessionStorage.setItem("propertyData", JSON.stringify(propertyData));
-        window.location.href = `/property-form?type=edit&id=${idValue}`
+        const workspaceData = data.workspaces.find(ws => ws.workspace_id === id);
+        console.log(workspaceData);
+        sessionStorage.setItem("workspaceData", JSON.stringify(workspaceData));
+        window.location.href = `/workspace-form?type=edit&id=${property_id}&ws=${id}`
       }
 
       if (e.target.matches("#delete-btn")) {
         const id = Number(e.target.dataset.id);
-
         const confirmed = confirm("Are you sure you want to delete this?");
-
         if (confirmed) {
-          const res = await fetchApi('/api/createProperty', "DELETE", {id});
+          const res = await fetchApi(`/api/createworkspace?propertyID=${property_id}`, "DELETE", { id });
 
-          console.log(res)
+          console.log(res);
 
-          if (res.message.toLowerCase().trim() === "delete successful"){
-            window.location.href = `/property-form?type=edit&id=${idValue}`
+          if (res.message.toLowerCase().trim() === "delete successful") {
+            window.location.href = `/my-workspace/${property_id}`
           }
         }
       }
     })
 
     contentContainer.append(card);
-  });
-}
+
+  })
+})
 
 async function fetchApi(API, method = "GET", body = null) {
   try {
