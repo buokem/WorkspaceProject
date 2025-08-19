@@ -1,5 +1,6 @@
 //install dependencies
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,7 +17,7 @@ const getCoWorkerPageRouter = require('./routes/coworker-page/coWorker');
 const getCoWorkerViewPageRouter = require('./routes/coworker-page/coWorkerView');
 const getHomePageRouter = require('./routes/home-page/homePageRouter');
 const getAuthPageRouter = require('./routes/auth/auth');
-const getWorkspacesForPropertyRouter = require('./routes/api/api-getworkspaces')
+const getWorkspacesForPropertyRouter = require('./routes/api/api-getworkspaces');
 
 const getCoWorkerByID = require('./routes/api/api-coWorkerView');
 const getPropertyById = require('./routes/api/api-propertyById');
@@ -29,8 +30,7 @@ const createWorkspaceRouter = require('./routes/owner-page/create-workspace');
 const createPropertyRouter = require('./routes/api/api-createProperty');
 const getPropertiesForOwnerRouter = require('./routes/api/api-getProperties');
 
-const {auth} = require('./middleware/auth-middleware');
-
+const { auth } = require('./middleware/auth-middleware');
 
 //middleware to parseJSON
 app.use(express.json());
@@ -75,6 +75,13 @@ app.use('/my-workspace', auth({roles:['owner']}), getMyWorkSpaceRouter);
 app.use('/property-form', auth({roles:['owner']}), getPropertyFormRouter);
 app.use('/workspace-form', auth({roles:['owner']}), getWorkspaceFormRouter);
 
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const PORT = process.env.PORT || 3000;
 
