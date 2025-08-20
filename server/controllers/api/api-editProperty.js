@@ -1,5 +1,6 @@
 const Property = require("../../models/Property");
 const PropertyFacility = require("../../models/PropertyFacility");
+const Facility = require("../../models/Facility");
 
 async function editProperty(req, res) {
   try {
@@ -27,8 +28,7 @@ async function editProperty(req, res) {
     }
 
     // Find property by property_id
-    const property = await Property.findOne({ property_id });
-
+    const property = await Property.findById(property_id);
     if (!property) {
       return res.status(404).json({ message: `No property with id: ${property_id}` });
     }
@@ -52,26 +52,33 @@ async function editProperty(req, res) {
 
     // Add new facilities if needed
     const propertyFacilityArray = [];
+
     if (transport === "on") {
-      propertyFacilityArray.push(
-        new PropertyFacility({
-          property_id,
-          facility_id: 2,
-          created_at: new Date(),
-          updated_at: new Date(),
-        })
-      );
+      const transportFacility = await Facility.findOne({ name: "Public Transport" });
+      if (transportFacility) {
+        propertyFacilityArray.push(
+          new PropertyFacility({
+            property_id,
+            facility_id: transportFacility._id,
+            created_at: new Date(),
+            updated_at: new Date(),
+          })
+        );
+      }
     }
 
     if (parking === "on") {
-      propertyFacilityArray.push(
-        new PropertyFacility({
-          property_id,
-          facility_id: 1,
-          created_at: new Date(),
-          updated_at: new Date(),
-        })
-      );
+      const parkingFacility = await Facility.findOne({ name: "Parking" });
+      if (parkingFacility) {
+        propertyFacilityArray.push(
+          new PropertyFacility({
+            property_id,
+            facility_id: parkingFacility._id,
+            created_at: new Date(),
+            updated_at: new Date(),
+          })
+        );
+      }
     }
 
     if (propertyFacilityArray.length > 0) {

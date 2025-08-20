@@ -17,7 +17,7 @@ async function getProperties(req, res) {
     // Lấy property facilities cho mỗi property
     const dataWithFacilities = await Promise.all(
       properties.map(async property => {
-        const facilities = await PropertyFacility.find({ property_id: property.property_id });
+        const facilities = await PropertyFacility.find({ property_id: property._id }).populate('facility_id');
         return {
           ...property.toObject(),
           Facilities: facilities,

@@ -54,8 +54,8 @@ async function getProperty() {
         </div>
         
         <ul class="dd-menu hide">
-          <li><button class="edit-btn" id="edit-btn" data-id=${property.property_id}>Edit</button></li>
-          <li><button class="delete-btn" id="delete-btn" data-id=${property.property_id}>Delete</button></li>
+          <li><button class="edit-btn" id="edit-btn" data-id=${property._id}>Edit</button></li>
+          <li><button class="delete-btn" id="delete-btn" data-id=${property._id}>Delete</button></li>
         </ul>
       </div>
     `;
@@ -64,7 +64,7 @@ async function getProperty() {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches('.view-detail-btn')) {
-        window.location.href = `property-view/${property.property_id}`;
+        window.location.href = `property-view/${property._id}`;
         return;
       }
 
@@ -74,17 +74,17 @@ async function getProperty() {
       }
 
       if (e.target.matches('#edit-btn')) {
-        const id = Number(e.target.dataset.id);
+        const id = e.target.dataset.id;
         const propertyData = availableProperty.find(
-          (p) => p.property_id === id,
+          (p) => p._id === id,
         );
         console.log(propertyData);
         sessionStorage.setItem('propertyData', JSON.stringify(propertyData));
-        window.location.href = `/property-form?type=edit&id=${idValue}`;
+        window.location.href = `/property-form?type=edit&ownerId=${idValue}`;
       }
 
       if (e.target.matches('#delete-btn')) {
-        const id = Number(e.target.dataset.id);
+        const id = e.target.dataset.id;
 
         const confirmed = confirm('Are you sure you want to delete this?');
 
@@ -94,7 +94,7 @@ async function getProperty() {
           console.log(res);
 
           if (res.message.toLowerCase().trim() === 'delete successful') {
-            window.location.href = `/property-form?type=edit&id=${idValue}`;
+            window.location.href = `/owner?id=${idValue}`;
           }
         }
       }

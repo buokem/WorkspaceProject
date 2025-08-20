@@ -1,5 +1,6 @@
 const Property = require("../../models/Property");
 const PropertyFacility = require("../../models/PropertyFacility");
+const Facility = require("../../models/Facility");
 
 async function createProperty(req, res) {
   try {
@@ -38,26 +39,33 @@ async function createProperty(req, res) {
 
     // Save property
     await propertyData.save();
+    const propertyID = propertyData._id;
 
     // Facilities
     const propertyFacilityArray = [];
 
     if (transport === "on") {
-      propertyFacilityArray.push(
-        new PropertyFacility({
-          property_id: propertyID,
-          facility_id: 2, // giả định 2 = transport
-        })
-      );
+      const transportFacility = await Facility.findOne({ name: "Public Transport" });
+      if (transportFacility) {
+        propertyFacilityArray.push(
+          new PropertyFacility({
+            property_id: propertyID,
+            facility_id: transportFacility._id,
+          })
+        );
+      }
     }
 
     if (parking === "on") {
-      propertyFacilityArray.push(
-        new PropertyFacility({
-          property_id: propertyID,
-          facility_id: 1, // giả định 1 = parking
-        })
-      );
+      const parkingFacility = await Facility.findOne({ name: "Parking" });
+      if (parkingFacility) {
+        propertyFacilityArray.push(
+          new PropertyFacility({
+            property_id: propertyID,
+            facility_id: parkingFacility._id,
+          })
+        );
+      }
     }
 
     if (propertyFacilityArray.length > 0) {
