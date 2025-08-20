@@ -1,18 +1,33 @@
-const fs = require('fs').promises;
-const path = require('path');
+const Facility = require("../../models/Facility");
+const Property = require("../../models/Property");
+const Workspace = require("../../models/Workspace");
+const User = require("../../models/User");
+const PropertyFacility = require("../../models/PropertyFacility");
+const WorkspaceFacility = require("../../models/WorkspaceFacility");
 
 async function getData(req, res) {
-    //get data.json file
-    try{
-        const databaseFilePath = path.join(__dirname, "../../data/database.json");
+  try {
+    const facilities = await Facility.find();
+    const properties = await Property.find();
+    const workspaces = await Workspace.find();
+    const users = await User.find();
+    const propertyFacilities = await PropertyFacility.find();
+    const workspaceFacilities = await WorkspaceFacility.find();
 
-        const content = await fs.readFile(databaseFilePath, 'utf-8');
-        
-        res.json(content);
-    }
-    catch(err){
-        console.error(err);
-    }
+    const data = {
+      facilityData: facilities,
+      propertyData: properties,
+      workspaceData: workspaces,
+      userData: users,
+      propertyFacility: propertyFacilities,
+      workspaceFacility: workspaceFacilities,
+    };
+
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message || "Server error." });
+  }
 }
 
 module.exports = getData;

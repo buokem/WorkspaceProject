@@ -1,7 +1,7 @@
 {
   "name": "workspace-project",
   "version": "1.0.0",
-  "description": "Bills Splitter — Node + Express + SPA with database.json",
+  "description": "Group Project 5",
   "main": "server/server.js",
   "scripts": {
     "start": "node server.js",

@@ -1,46 +1,33 @@
-const path = require('path');
-const fs = require('fs').promises;
+const Property = require("../../models/Property");
 
 async function deleteProperty(req, res) {
-    try {
-        const id = Number(req.body.id);
+  try {
+    const id = req.body.id;
 
-        //connect to database
-        const databaseFilePath = path.join(__dirname, "../../data/database.json");
-        let content = await fs.readFile(databaseFilePath, 'utf-8');
-        content = JSON.parse(content);
-
-        //remove property with property_id === id from array
-        const withoutArray = content.propertyData.filter(p => p.property_id !== id);
-
-        //if still same length then nothing was removed
-        //send error
-        if (withoutArray.length === content.propertyData.length) {
-            console.log("Nothing was deleted");
-            return res.status(404).json({
-                message: "Property not found"
-            });
-        }
-
-        //append new array to propertyData
-        content.propertyData = [...withoutArray];
-
-        //save to db
-        await fs.writeFile(databaseFilePath, JSON.stringify(content, null, 2), 'utf8');
-
-        return res.status(200).json({
-            message: "Delete successful",
-        });
-
-    }
-    catch (err) {
-        console.error(err);
-        return res.status(500).json({
-            message: "Failed to delete Property",
-            error: err.message || 'Server error.' 
-        });
+    if (!id) {
+      return res.status(400).json({ message: "Property ID is required" });
     }
 
+    // Find and delete by property_id (nếu mày đang lưu UUID trong field property_id)
+    const deleted = await Property.findOneAndDelete({ _id: id });
+
+    if (!deleted) {
+      return res.status(404).json({
+        message: "Property not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Delete successful",
+      deletedProperty: deleted, // optional: return thông tin property vừa xóa
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      message: "Failed to delete Property",
+      error: err.message || "Server error.",
+    });
+  }
 }
 
-module.exports = deleteProperty
+module.exports = deleteProperty;
