@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         await handleErrorResponse(response);
       }
 
-      const { role, token } = await getAndStoreToken(response);
+      const { id, role, token } = await getAndStoreToken(response);
 
       //fetch pages based on their roles
-      await redirectUserUsingRole(role, token);
+      await redirectUserUsingRole(id, role, token);
 
     }
     catch (err) {
@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function redirectUserUsingRole(id, role, token) {
-
     document.cookie = `token=${token}; Path=/; SameSite=Lax`;
 
     if (role === "coworker") {
