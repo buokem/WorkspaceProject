@@ -10,7 +10,6 @@ async function getData(req, res) {
     const facilities = await Facility.find();
     const properties = await Property.find();
     const workspaces = await Workspace.find();
-    const users = await User.find();
     const propertyFacilities = await PropertyFacility.find();
     const workspaceFacilities = await WorkspaceFacility.find();
 
@@ -18,7 +17,6 @@ async function getData(req, res) {
       facilityData: facilities,
       propertyData: properties,
       workspaceData: workspaces,
-      userData: users,
       propertyFacility: propertyFacilities,
       workspaceFacility: workspaceFacilities,
     };
