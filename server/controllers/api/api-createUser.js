@@ -30,14 +30,14 @@ async function createUser(req, res) {
 
     // Sign JWT
     const token = jwt.sign(
-      { sub: id, email, role },
+      { sub: newUser._id, email, role },
       process.env.JWT_SECRET,
       { expiresIn: "15m", issuer: "watchspaces" }
     );
 
     return res.status(201).json({
       message: "User created.",
-      user: { id, email, role, createdAt },
+      user: { id: newUser._id, email, role },
       token,
     });
   } catch (err) {

@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     //change this to get token
-    let appData = await fetchApi('/api/database', "json");
-
-    appData = JSON.parse(appData);
+    const appData = await fetchApi('/api/database', "json");
 
     const {workspaceData, propertyData, facilityData, workspaceFacility, propertyFacility} = appData;
 
@@ -213,7 +211,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         parent.innerHTML = ``
         //no items match your search
         data.forEach(ws => {
-            const workspaceProperty = propertyData.find(p => p.property_id === ws.property_id);
+            const workspaceProperty = propertyData.find(p => p._id === ws.property_id);
             const div = document.createElement('div')
             div.classList.add('card');
             div.innerHTML =
@@ -254,11 +252,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <rect x="14" y="36" width="36" height="16" rx="4" />
                                     <text x="50" y="60" fill="currentColor" font-size="12">#</text>
                                 </svg>
-                                <span>${ws.capacity}</span>
-                                <span>seats</span>
+                                <span>${ws.capacity} seats</span>
                             </div>
                         </div>
-                        <button class="rounded-button view-details" data-id=${ws.workspace_id}>
+                        <button class="rounded-button view-details" data-id=${ws._id}>
                             View Details
                         </button>
                     </div>
