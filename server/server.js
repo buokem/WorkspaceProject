@@ -79,12 +79,38 @@ console.log('🚀 ~ process.env.MONGO_URI:', process.env.MONGO_URI)
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("✅ MongoDB connected successfully!");
+})
+.catch((err) => {
+  console.error("❌ MongoDB connection error:", err);
+});
+
+const db = mongoose.connection;
+
+db.on("error", (err) => {
+  console.error("MongoDB connection error (event):", err);
+});
+
+db.once("open", () => {
+  console.log("MongoDB connection opened!");
 });
 
 // todo disconnect
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,'0.0.0.0' ,() => {
+const server = app.listen(PORT,'0.0.0.0' ,() => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
+// Disconnect when app turn off
+const gracefulExit = async () => {
+  await mongoose.disconnect();
+  console.log("MongoDB disconnected gracefully");
+  server.close(() => process.exit(0));
+};
+
+process.on("SIGINT", gracefulExit);   // Ctrl+C
+process.on("SIGTERM", gracefulExit);  // Heroku, Docker stop
