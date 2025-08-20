@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Else, we extract just the IDs from the returned array
-        const matchedIds = matched.map(p => p.property_id);
+        const matchedIds = matched.map(p => p._id);
 
         // 2) Facility filter: if no checked boxes, return all matched IDs array
         if (!checkedFacilities.length) {
