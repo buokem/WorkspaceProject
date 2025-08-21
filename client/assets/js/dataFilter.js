@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function propertyFilter(properties,searchInput,checkedFacilities,propertyFacilityMap) {
         // 1) Text‐search
         const term = searchInput.trim().toLowerCase();
+        console.log(term);
         //if searchInput is an empty string, return all properties, else match string with full address of each property and return only matches
         const matched = term === ''
             ? properties
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 (`${p.Address_line1} ${p.city} ${p.province}`).toLowerCase().includes(term)
             );
 
+            console.log(matched)
         //if matched is an empty array, just return [];
         if(matched.length === 0){
             return [];
