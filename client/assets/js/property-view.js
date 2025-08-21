@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const propertyNameEl = document.querySelector('#property-name');
   const viewWorkspaceBtn = document.querySelector('#view-workspace');
 
+  const userInfo = JSON.parse(sessionStorage.getItem("watchspaceUser"));
+
+  const userName = userInfo.email.split("@")[0];
+  document.getElementById("coworker-name").innerText = userName;
+  document.getElementById("initial").innerText = userName[0].toUpperCase();
+
   const theProperty = await getPropertyById();
   propertyNameEl.innerText = theProperty.name;
 

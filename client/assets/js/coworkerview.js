@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
     const appData = await getData();
 
+    console.log(appData)
+
+    const userInfo = JSON.parse(sessionStorage.getItem("watchspaceUser"));
+
+    const userName = userInfo.email.split("@")[0];
+    document.getElementById("coworker-name").innerText = userName;
+    document.getElementById("initial").innerText = userName[0].toUpperCase();
+
     const facilityName = {
         "Parking": [
             "Parking",
@@ -74,12 +82,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         </svg>`,
     }
 
-    console.log(appData);
-
-    const facilityMap = new Map(JSON.parse(sessionStorage.getItem("facilityMap")));
-
-    console.log(facilityMap);
-    
+    document.getElementById('phone').href = `tel:+${appData.phone}`
     const mainImage = document.querySelector('.main-image')
 
     document.querySelector('.content-title').innerText = appData["name"];
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     //build address tags;
     const addressParts = document.querySelectorAll('.address-part');
     const splitAddress = appData["address"].split(',');
-    console.log(splitAddress)
+
     addressParts.forEach((part, i) => {
         part.innerText = splitAddress[i].trim();
     });
@@ -129,13 +132,12 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
     for(let i = 0; i<appData["pFacility"].length; i++) {
         const target = appData["pFacility"][i];
-        console.log("pfac")
         createTag(tagParent, target)   
     }
 
     for(let i =0; i<appData["wsFacility"].length; i++) {
         const target = appData["wsFacility"][i];
-        console.log("wsfac")
+
         createTag(tagParent, target)
     }
 
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     function createTag(parent, target) {
         const div = document.createElement('div');
         div.classList.add('tag');
-        console.log(target)
+
         div.innerHTML = 
         `
             <span class="tag-icon">${facilityName[target][1]}</span>

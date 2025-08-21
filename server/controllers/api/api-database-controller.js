@@ -12,6 +12,7 @@ async function getData(req, res) {
     const workspaces = await Workspace.find();
     const propertyFacilities = await PropertyFacility.find();
     const workspaceFacilities = await WorkspaceFacility.find();
+    const user = req.user
 
     const data = {
       facilityData: facilities,
@@ -19,6 +20,7 @@ async function getData(req, res) {
       workspaceData: workspaces,
       propertyFacility: propertyFacilities,
       workspaceFacility: workspaceFacilities,
+      userInfo: user
     };
 
     res.json(data);

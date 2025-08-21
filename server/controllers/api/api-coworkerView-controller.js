@@ -1,12 +1,17 @@
 const Workspace = require("../../models/Workspace");
 const WorkspaceFacility = require("../../models/WorkspaceFacility");
 const PropertyFacility = require("../../models/PropertyFacility");
+const User = require("../../models/User");
 
 async function getWorkspaceById(req, res) {
   try {
     const workspaceId = req.params.id;
 
     const workspace = await Workspace.findById(workspaceId).populate("property_id");
+    const user = await User.findById(workspace.property_id.owner_id);
+    const phone = user.phone;
+
+    console.log(phone)
     if (!workspace) {
       return res.status(404).json({ error: `Workspace with ID ${workspaceId} doesn't exist` });
     }
@@ -18,6 +23,7 @@ async function getWorkspaceById(req, res) {
     const result = {
       ...workspace.toObject(),
       address,
+      phone,
       wsFacility: wsFacilities.map(f => f.facility_id.name),
       pFacility: pFacilities.map(f => f.facility_id.name),
     };

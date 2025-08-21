@@ -4,6 +4,7 @@ const PropertyFacility = require("../../models/PropertyFacility");
 async function getProperties(req, res) {
   try {
     const ownerId = req.params.id;
+    const user = req.user;
 
     const properties = await Property.find({ owner_id: ownerId });
 
@@ -23,8 +24,7 @@ async function getProperties(req, res) {
       })
     );
 
-    console.log(dataWithFacilities);
-    res.json(dataWithFacilities);
+    res.json({dataWithFacilities, user});
   } catch (err) {
     console.error(err);
     res.status(404).json({ error: err.message });

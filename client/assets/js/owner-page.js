@@ -18,8 +18,14 @@ async function getProperty() {
 
   const appData = await fetchApi(`api/getproperties/${idValue}`);
 
-  const availableProperty = appData;
-  console.log(availableProperty);
+  const availableProperty = appData.dataWithFacilities;
+  const userInfo = appData.user;
+
+  const userName = userInfo.email.split("@")[0];
+  document.getElementById("coworker-name").innerText = userName;
+  document.getElementById("initial").innerText = userName[0].toUpperCase();
+ 
+  sessionStorage.setItem("watchspaceUser", JSON.stringify(userInfo));
 
   const contentContainer = document.getElementById('content');
   const propertyCountEl = document.getElementById('property-count');

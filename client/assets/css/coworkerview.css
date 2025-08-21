@@ -6,6 +6,11 @@
     column-gap: var(--spacing-md);
 }
 
+a{
+    color: #000000;
+    text-decoration: none;
+}
+
 .image-tab{
     width: 420px;
     display: flex;

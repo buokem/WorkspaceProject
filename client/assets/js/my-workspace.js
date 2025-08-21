@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     window.location.href = `/workspace-form?type=create&id=${property_id}`
   });
 
-  console.log(data);
+  const userInfo = JSON.parse(sessionStorage.getItem("watchspaceUser"));
+
+  const userName = userInfo.email.split("@")[0];
+  document.getElementById("coworker-name").innerText = userName;
+  document.getElementById("initial").innerText = userName[0].toUpperCase();
 
   const contentContainer = document.getElementById('content');
   const propertyCountEl = document.getElementById('property-count');

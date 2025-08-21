@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     //change this to get token
     const appData = await fetchApi('/api/database', "json");
 
-    const {workspaceData, propertyData, facilityData, workspaceFacility, propertyFacility} = appData;
+    const {workspaceData, propertyData, facilityData, workspaceFacility, propertyFacility, userInfo} = appData;
 
     const workspaceMap = createWorkspaceMap(workspaceData);
 
@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const facilityMap = createFacilityMap(facilityData);
 
-    console.log(JSON.stringify([...facilityMap]));
+    sessionStorage.setItem("watchspaceUser", JSON.stringify(userInfo));
 
-    sessionStorage.setItem("facilityMap", JSON.stringify([...facilityMap]));
+    const userName = userInfo.email.split("@")[0];
 
-    console.log( workspaceData, workspaceMap, propertyFacilityMap, workspaceFacilityMap, facilityMap)
+    console.log(userName);
     
     let cardParent = grabHtmlByID('content');
     let searchInput = grabHtmlByID(`search-input`);
@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let maxSize = grabHtmlByID('max-size');
     let leaseSelect = grabHtmlByID('lease-select');
     const filterTab = document.querySelector('.filter-tab');
+    document.getElementById("coworker-name").innerText = userName;
+    document.getElementById("initial").innerText = userName[0].toUpperCase();
 
     buildCards(workspaceData, cardParent);
 
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 (`${p.Address_line1} ${p.city} ${p.province}`).toLowerCase().includes(term)
             );
 
-            console.log(matched)
+            console.log(matched);
         //if matched is an empty array, just return [];
         if(matched.length === 0){
             return [];
