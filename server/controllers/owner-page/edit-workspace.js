@@ -1,6 +1,7 @@
 const Workspace = require("../../models/Workspace");
 const WorkspaceFacility = require("../../models/WorkspaceFacility");
 const Property = require("../../models/Property");
+const Facility = require("../../models/Facility")
 
 async function editWorkspace(req, res) {
   try {
@@ -9,7 +10,10 @@ async function editWorkspace(req, res) {
     const propertyID = req.query.propertyID;
     const userID = req.user.id;
 
-    const property = await Property.findOne({ property_id: propertyID, owner_id: userID });
+    const property = await Property.findOne({ _id: propertyID, owner_id: userID });
+
+    console.log(property)
+
     if (!property) return res.status(404).json({ message: "Can't access data" });
 
     let pictures = null;
@@ -29,11 +33,13 @@ async function editWorkspace(req, res) {
       workspace_id
     } = req.body;
 
+    console.log(workspace_id)
+
     if (req.files.length !== 0) {
       pictures = req.files.map(file => "/" + file.filename);
     }
 
-    const workspace = await Workspace.findOne({ workspace_id: workspace_id, property_id: propertyID });
+    const workspace = await Workspace.findOne({ _id: workspace_id, property_id: propertyID });
     if (!workspace) return res.status(404).json({ message: `No workspace with id ${workspace_id}` });
 
     workspace.name = name;
@@ -48,13 +54,29 @@ async function editWorkspace(req, res) {
 
     await workspace.save();
 
-    await WorkspaceFacility.deleteMany({ workspace_id: workspace_id });
+    await WorkspaceFacility.deleteMany({ workspace_id });
 
     const workspaceFacilityArray = [];
-    if (smoking === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(workspace_id, 4));
-    if (projector === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(workspace_id, 5));
-    if (microphone === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(workspace_id, 6));
-    if (whiteboard === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(workspace_id, 7));
+
+    if (smoking === "on") {
+      const f = await createNewWorkspaceFacility(workspace._id, "Smoking");
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (projector === "on") {
+      const f = await createNewWorkspaceFacility(workspace._id, "Projector");
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (microphone === "on") {
+      const f = await createNewWorkspaceFacility(workspace._id, "Microphone");
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (whiteboard === "on") {
+      const f = await createNewWorkspaceFacility(workspace._id, "Whiteboard");
+      if (f) workspaceFacilityArray.push(f);
+    }
 
     if (workspaceFacilityArray.length > 0) {
       await WorkspaceFacility.insertMany(workspaceFacilityArray);
@@ -70,13 +92,18 @@ async function editWorkspace(req, res) {
     });
   }
 
-  function createNewWorkspaceFacility(workspaceID, facilityID) {
-    return {
+  async function createNewWorkspaceFacility(workspaceID, facilityName) {
+    const facility = await Facility.findOne({ name: facilityName });
+    if (!facility) return null; 
+
+    console.log(facility)
+
+    return new WorkspaceFacility({
       workspace_id: workspaceID,
-      facility_id: facilityID,
+      facility_id: facility._id,
       created_at: new Date(),
       updated_at: new Date(),
-    };
+    });
   }
 }
 

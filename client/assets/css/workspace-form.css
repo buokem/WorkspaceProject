@@ -84,7 +84,7 @@ body {
   margin-bottom: 6px;
 }
 
-.form-left input[type="text"] {
+.form-left input[type="text"], .form-left input[type="number"] {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #bbb;

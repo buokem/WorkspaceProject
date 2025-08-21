@@ -219,9 +219,14 @@ header{
     right: 12px;
 }
 
+.option-control svg{
+    fill: var(--color-gray-border);
+}
+
 .dd-menu{
     position: absolute;
     right: 4px;
+    list-style-type: none;
 }
 
 .dd-menu.hide{
@@ -230,12 +235,13 @@ header{
 
 .edit-btn, .delete-btn{
     width: 100%;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 4px 8px;
     border-radius: 12px;
     margin-bottom: 4px;
-    border: 2px solid var(--color-gray-border);
+    border: 2px solid var(--color-accent-teal);
     font-family: var(--font-body);
     font-weight: 500;
+    font-size: var(--text-xs)
 }
 
 #coworker-name{

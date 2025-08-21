@@ -1,4 +1,5 @@
 const Property = require("../../models/Property");
+const PropertyFacility = require("../../models/PropertyFacility");
 
 async function deleteProperty(req, res) {
   try {
@@ -15,6 +16,8 @@ async function deleteProperty(req, res) {
         message: "Property not found",
       });
     }
+
+    await PropertyFacility.deleteMany({ property_id: id });
 
     return res.status(200).json({
       message: "Delete successful",

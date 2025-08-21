@@ -22,7 +22,7 @@ async function getWorkspacesForProperty(req, res) {
 
     const dataWithFacilities = await Promise.all(
       workspaces.map(async ws => {
-        const facilities = await WorkspaceFacility.find({ workspace_id: ws.workspace_id });
+        const facilities = await WorkspaceFacility.find({ workspace_id: ws._id }).populate('facility_id');
         return {
           ...ws.toObject(),
           Facilities: facilities,

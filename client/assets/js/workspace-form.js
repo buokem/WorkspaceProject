@@ -33,16 +33,16 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     if (workspaceData.Facilities.length !== 0) {
       workspaceData.Facilities.forEach(fc => {
-        if (fc.facility_id === 4) {
+        if (fc.facility_id.name === "Smoking") {
           document.getElementById("smoking").checked = true;
         }
-        if (fc.facility_id === 5) {
+        if (fc.facility_id.name === "Projector") {
           document.getElementById("projector").checked = true;
         }
-        if (fc.facility_id === 6) {
+        if (fc.facility_id.name === "Microphone") {
           document.getElementById("microphone").checked = true;
         }
-        if (fc.facility_id === 7) {
+        if (fc.facility_id.name === "Whiteboard") {
           document.getElementById("whiteboard").checked = true;
         }
       })

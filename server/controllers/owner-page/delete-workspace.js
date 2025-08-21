@@ -8,10 +8,12 @@ async function deleteWorkspace(req, res) {
     const propertyID = req.query.propertyID;
     const userID = req.user.id;
 
-    const property = await Property.findOne({ property_id: propertyID, owner_id: userID });
+    console.log(workspaceID, propertyID)
+
+    const property = await Property.findOne({ _id: propertyID, owner_id: userID });
     if (!property) return res.status(404).json({ message: "Can't access data" });
 
-    const deleted = await Workspace.findOneAndDelete({ workspace_id: workspaceID, property_id: propertyID });
+    const deleted = await Workspace.findOneAndDelete({ _id: workspaceID, property_id: propertyID });
     if (!deleted) return res.status(404).json({ message: "Workspace not found" });
 
     await WorkspaceFacility.deleteMany({ workspace_id: workspaceID });

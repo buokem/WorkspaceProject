@@ -1,6 +1,7 @@
 const Workspace = require("../../models/Workspace");
 const WorkspaceFacility = require("../../models/WorkspaceFacility");
 const Property = require("../../models/Property");
+const Facility = require("../../models/Facility");
 
 async function createWorkspace(req, res) {
   try {
@@ -45,12 +46,29 @@ async function createWorkspace(req, res) {
     await newWorkspace.save();
 
     const workspaceFacilityArray = [];
-    if (smoking === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 4));
-    if (projector === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 5));
-    if (microphone === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 6));
-    if (whiteboard === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 7));
+    if (smoking === "on") {
+      const f = await createNewWorkspaceFacility(newWorkspace._id, "Smoking");
+
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (projector === "on") {
+      const f = await createNewWorkspaceFacility(newWorkspace._id, "Projector");
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (microphone === "on") {
+      const f = await createNewWorkspaceFacility(newWorkspace._id, "Microphone");
+      if (f) workspaceFacilityArray.push(f);
+    }
+
+    if (whiteboard === "on") {
+      const f = await createNewWorkspaceFacility(newWorkspace._id, "Whiteboard");
+      if (f) workspaceFacilityArray.push(f);
+    }
 
     if (workspaceFacilityArray.length > 0) {
+      console.log(workspaceFacilityArray)
       await WorkspaceFacility.insertMany(workspaceFacilityArray);
     }
 
@@ -64,14 +82,19 @@ async function createWorkspace(req, res) {
     });
   }
 
-  function createNewWorkspaceFacility(workspaceID, facilityID) {
-    return {
+  async function createNewWorkspaceFacility(workspaceID, facilityName) {
+    const facility = await Facility.findOne({ name: facilityName });
+    console.log(facility);
+    if (!facility) return null; // or throw error if you want strict
+
+    return new WorkspaceFacility({
       workspace_id: workspaceID,
-      facility_id: facilityID,
+      facility_id: facility._id,
       created_at: new Date(),
       updated_at: new Date(),
-    };
+    });
   }
+
 }
 
 module.exports = createWorkspace;
