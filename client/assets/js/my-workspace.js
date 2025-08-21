@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const propertyCountEl = document.getElementById('property-count');
   propertyCountEl.innerText = `${data.workspaces.length} Properties Available`;
 
-  data.workspaces.forEach(workspace => {
+  data.workspaces.forEach((workspace, i) => {
     const card = document.createElement('div');
     card.classList.add('card');
 
@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
       }
     })
 
+    card.style.animationDelay = `${i * 0.1}s`;
+    card.classList.add('show');
     contentContainer.append(card);
 
   })

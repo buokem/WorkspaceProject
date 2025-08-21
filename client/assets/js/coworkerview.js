@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     const appData = await getData();
 
     const facilityName = {
-        1: [
+        "Parking": [
             "Parking",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="4" y="4" width="56" height="56" />
                 <text x="18" y="44" fill="currentColor" font-size="36" font-family="Arial, sans-serif">P</text>
             </svg>` 
         ],
-        2: [
+        "Public Transport": [
             "Public Transport",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="4" y="16" width="56" height="32" />
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', async ()=> {
                 <rect x="20" y="24" width="24" height="12" />
             </svg>` 
         ],
-        3:[
+        "WiFi":[
             "Wi-Fi",
             ''
         ],
-        4:[
+        "Smoking":[
             "Smoking",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="2" y="28" width="40" height="8" />
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
                     M58 20c0 4-4 4-4 0s4-4 4 0" />
             </svg>`
         ],
-        5:[
+        "Projector":[
             "Projector",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="2" y="16" width="44" height="32" />
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
                 <rect x="46" y="26" width="4" height="12" fill="currentColor" />
             </svg>`
         ],
-        6:[
+        "Microphone":[
             "Microphone",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="26" y="12" width="12" height="28" rx="6" />
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
                 <line x1="22" y1="54" x2="42" y2="54" />
             </svg>`
         ],
-        7:[
+        "Whiteboard":[
             "WhiteBoard",
             `<svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
                 <rect x="4" y="8" width="48" height="32" />
@@ -75,6 +75,10 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     }
 
     console.log(appData);
+
+    const facilityMap = new Map(JSON.parse(sessionStorage.getItem("facilityMap")));
+
+    console.log(facilityMap);
     
     const mainImage = document.querySelector('.main-image')
 
@@ -95,14 +99,14 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     const overViewTags = document.querySelectorAll('.overview-block .tag');
     overViewTags[0].querySelector('.tag-icon').innerHTML = facilityName["seat"];
     overViewTags[0].querySelector('.tag-text').innerText = `${appData["capacity"]} seater`;
-    if(appData["pFacility"].includes(1)) {
-        overViewTags[1].querySelector('.tag-icon').innerHTML = facilityName[1][1];
+    if(appData["pFacility"].includes("Parking")) {
+        overViewTags[1].querySelector('.tag-icon').innerHTML = facilityName["Parking"][1];
     }
     else{
         overViewTags[1].style.display = 'none';
     }
-    if(appData["wsFacility"].includes(4)) {
-        overViewTags[2].querySelector('.tag-icon').innerHTML = facilityName[4][1];
+    if(appData["wsFacility"].includes("Smoking")) {
+        overViewTags[2].querySelector('.tag-icon').innerHTML = facilityName["Smoking"][1];
     }
     else{
         overViewTags[2].style.display = "none";
@@ -125,11 +129,13 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
     for(let i = 0; i<appData["pFacility"].length; i++) {
         const target = appData["pFacility"][i];
+        console.log("pfac")
         createTag(tagParent, target)   
     }
 
     for(let i =0; i<appData["wsFacility"].length; i++) {
         const target = appData["wsFacility"][i];
+        console.log("wsfac")
         createTag(tagParent, target)
     }
 
@@ -137,6 +143,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     function createTag(parent, target) {
         const div = document.createElement('div');
         div.classList.add('tag');
+        console.log(target)
         div.innerHTML = 
         `
             <span class="tag-icon">${facilityName[target][1]}</span>

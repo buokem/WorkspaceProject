@@ -25,7 +25,7 @@ async function getProperty() {
   const propertyCountEl = document.getElementById('property-count');
   propertyCountEl.innerText = `${availableProperty.length} Properties Available`;
 
-  availableProperty.forEach((property) => {
+  availableProperty.forEach((property, i) => {
     const card = document.createElement('div');
     card.classList.add('card');
 
@@ -99,6 +99,9 @@ async function getProperty() {
         }
       }
     });
+
+    card.style.animationDelay = `${i * 0.1}s`;
+    card.classList.add('show');
 
     contentContainer.append(card);
   });

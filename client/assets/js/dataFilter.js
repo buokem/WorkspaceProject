@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const propertyFacilityMap = createPropertyFacilityMap(propertyFacility);
 
     const workspaceFacilityMap = createWorkspaceFacilityMap(workspaceFacility);
+
+    const facilityMap = createFacilityMap(facilityData);
+
+    console.log(JSON.stringify([...facilityMap]));
+
+    sessionStorage.setItem("facilityMap", JSON.stringify([...facilityMap]));
+
+    console.log( workspaceData, workspaceMap, propertyFacilityMap, workspaceFacilityMap, facilityMap)
     
     let cardParent = grabHtmlByID('content');
     let searchInput = grabHtmlByID(`search-input`);
@@ -77,6 +85,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         return workspaceMap;
+    }
+
+    function createFacilityMap(facilities){
+        const facMap = new Map();
+
+        facilities.forEach(fc => {
+            const value = fc._id;
+            const key = fc.name;
+
+            if(!facMap.has(key)){
+                facMap.set(key, value);
+            }
+        });
+
+        return facMap;
     }
 
     function createWorkspaceFacilityMap(workspaceFacility) {
@@ -162,15 +185,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     //for facilities
     function filterChecks(data, checkboxes){
+
         if(checkboxes.length !== 0){
             const facilitySets = checkboxes.map(fid => {
-                new Set(workspaceFacilityMap.get(fid) || []);
+                return new Set(workspaceFacilityMap.get(fid) || []);
             });
+
             return data.filter(ws => {
-                return facilitySets.every(set => ws.workspace_id)
+                return facilitySets.every(set => set.has(ws._id))
             });
         }
-        return data
+        return data;
     }
 
     //filter workspaces
@@ -204,7 +229,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return filteredChecks;
     }
 
-
     function grabHtmlByID(id){
         return document.getElementById(id)
     }
@@ -212,10 +236,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     function buildCards(data, parent){
         parent.innerHTML = ``
         //no items match your search
-        data.forEach(ws => {
+        data.forEach((ws, i) => {
             const workspaceProperty = propertyData.find(p => p._id === ws.property_id);
-            const div = document.createElement('div')
+            const div = document.createElement('div');
             div.classList.add('card');
+            
             div.innerHTML =
             `
                 <div class="card-image">
@@ -263,6 +288,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `
+            div.style.animationDelay = `${i * 0.1}s`;
+            div.classList.add('show');
             parent.appendChild(div);
         })
     }
@@ -278,14 +305,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const workspaceCheckboxes = [];
             //check which checkboxes where checked
             if(parkingSelect.checked){
-                propertyCheckboxes.push(1);
+                propertyCheckboxes.push(facilityMap.get("Parking"));
             }
             if(publicTransportSelect.checked){
-                propertyCheckboxes.push(2);
+                propertyCheckboxes.push(facilityMap.get("Public Transport"));
             }
             if(smokingSelect.checked){
-                workspaceCheckboxes.push(4);
+                workspaceCheckboxes.push(facilityMap.get("Smoking"));
             }
+
+            console.log(propertyCheckboxes, workspaceCheckboxes)
             //filter properties first
             const selectedProperties = propertyFilter(propertyData, searchInput.value, propertyCheckboxes, propertyFacilityMap);
             //get all workspaces that are in those filtered properties
@@ -293,7 +322,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             //filter workspaces
             const filteredWorkspaces = filterWorkspaces(selectedWorkspaces, workspaceCheckboxes);
 
-            buildCards(filteredWorkspaces, cardParent);
+            let filteredAvailable = []
+
+            if(availableSelect.checked){
+                filteredAvailable = filteredWorkspaces.filter(ws => ws.available);
+
+                console.log(filteredAvailable);
+            }
+            else{
+                filteredAvailable = [...filteredWorkspaces]
+            }
+
+            buildCards(filteredAvailable, cardParent);
 
             window.scrollTo({
                 top: 0,
@@ -301,7 +341,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 behavior: 'smooth' 
             });
 
-            console.log(selectedProperties, selectedWorkspaces, filteredWorkspaces);
+            console.log(selectedProperties, selectedWorkspaces, filteredAvailable);
         }
     });
 
