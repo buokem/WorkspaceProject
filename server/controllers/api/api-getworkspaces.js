@@ -1,42 +1,44 @@
-const path = require('path');
-const fs = require('fs').promises;
+const Property = require("../../models/Property");
+const Workspace = require("../../models/Workspace");
+const WorkspaceFacility = require("../../models/WorkspaceFacility");
 
 async function getWorkspacesForProperty(req, res) {
+  try {
     console.log(req.user, req.query);
-    const property_id = Number(req.query.propID);
+    const property_id = req.query.propID;
     const owner_id = req.user.id;
 
-    //connect database
-    const databaseFilePath = path.join(__dirname, "../../data/database.json");
-    const rawContent = await fs.readFile(databaseFilePath, 'utf-8');
-    const content = JSON.parse(rawContent);
+    const property = await Property.findOne({ _id: property_id, owner_id });
 
-    //find property with that id and also with the same owner id
-    const propertyFound = content.propertyData.find(p => p.property_id === property_id && p.owner_id === owner_id);
+    if (!property) {
+      return res.status(404).json({ message: "Cannot access workspaces" });
+    }
 
-    console.log(propertyFound);
+    const workspaces = await Workspace.find({ property_id });
 
-    if(!propertyFound) return res.status(404).json({
-        message: "Cannot access workspaces"
-    });
+    if (!workspaces || workspaces.length === 0) {
+      return res.status(200).json({ workspaces: [], message: "No workspace found. Please create one." });
+    }
 
-    const workspaces = content.workspaceData.filter(ws => ws.property_id === property_id);
-    
-    console.log(workspaces);
+    const dataWithFacilities = await Promise.all(
+      workspaces.map(async ws => {
+        const facilities = await WorkspaceFacility.find({ workspace_id: ws.workspace_id });
+        return {
+          ...ws.toObject(),
+          Facilities: facilities,
+          address: property.Address_line1,
+          city: property.city,
+          province: property.province,
+          postal_code: property.postal_code,
+        };
+      })
+    );
 
-    workspaces.forEach(ws => {
-        let facilities = content.workspaceFacility.filter(fc => fc.workspace_id === ws.workspace_id);
-        ws["Facilities"] = facilities;
-        ws["address"] = propertyFound.Address_line1;
-        ws["city"] = propertyFound.city;
-        ws["province"] = propertyFound.province;
-        ws["postal_code"] = propertyFound.postal_code
-    });
-
-
-    //if no workspace, i want you to redirect them to create a workspace
-    return res.status(200).json({workspaces});
-
+    return res.status(200).json({ workspaces: dataWithFacilities });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Failed to fetch workspaces", error: err.message });
+  }
 }
 
-module.exports = getWorkspacesForProperty
+module.exports = getWorkspacesForProperty;

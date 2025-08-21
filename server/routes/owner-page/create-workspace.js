@@ -10,6 +10,6 @@ router.post("/", upload.array("imageInput", 3) ,controller);
 
 router.put("/", upload.array("imageInput", 3), putController);
 
-router.delete("/", deleteController)
+router.delete("/", deleteController);
 
 module.exports = router;

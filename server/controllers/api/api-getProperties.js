@@ -1,33 +1,34 @@
-const path = require('path');
-const fs = require('fs').promises;
+const Property = require("../../models/Property");
+const PropertyFacility = require("../../models/PropertyFacility");
 
 async function getProperties(req, res) {
-    try {
-        const id = req.params.id;
-        const databaseFilePath = path.join(__dirname, "../../data/database.json");
-        const rawContent = await fs.readFile(databaseFilePath, 'utf-8');
-        const content = JSON.parse(rawContent);
+  try {
+    const ownerId = req.params.id;
 
-        const data = content.propertyData.filter(element => element.owner_id === id);
+    const properties = await Property.find({ owner_id: ownerId });
 
-        if (data.length === 0) {
-            throw new Error(`Properties with id ${id} doesn't exist`);
-        }
-
-        //we have propertyData, we want to add property facility for each propertyData
-        data.forEach(pData => {
-            let facilities = content.propertyFacility.filter(fc => fc.property_id === pData.property_id);
-            pData["Facilities"] = facilities;
-        });
-
-        //send to frontend
-        console.log(data);
-        res.json(data);
+    if (!properties || properties.length === 0) {
+      return res
+        .status(404)
+        .json({ error: `Properties with owner id ${ownerId} don't exist` });
     }
-    catch (err) {
-        console.error(err);
-        res.status(404).json({ error: err.message });
-    }
+
+    const dataWithFacilities = await Promise.all(
+      properties.map(async property => {
+        const facilities = await PropertyFacility.find({ property_id: property._id }).populate('facility_id');
+        return {
+          ...property.toObject(),
+          Facilities: facilities,
+        };
+      })
+    );
+
+    console.log(dataWithFacilities);
+    res.json(dataWithFacilities);
+  } catch (err) {
+    console.error(err);
+    res.status(404).json({ error: err.message });
+  }
 }
 
 module.exports = getProperties;

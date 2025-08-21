@@ -1,34 +1,33 @@
-const fs = require('fs').promises;
-const path = require('path');
+const Property = require("../../models/Property");
+const Workspace = require("../../models/Workspace");
 
 async function getFourData(req, res) {
-    //get data.json file
-    try{
-        const databaseFilePath = path.join(__dirname, "../../data/database.json");
+  try {
+    const workspaces = await Workspace.find().limit(4);
 
-        let content = await fs.readFile(databaseFilePath, 'utf-8');
-        content = JSON.parse(content);
-
-        //get address for each property
-        const pMap = new Map();
-        let properties = content["propertyData"];
-        properties.forEach(p => {
-            if(!pMap.has(p.property_id)){
-                pMap.set(p.property_id, p.Address_line1)
-            }
-        });
-
-        //get four workspace data and append their address to it
-        let workspaces = content["workspaceData"].slice(0, 4);
-        workspaces.forEach(el => {
-            el["Address"] = pMap.get(el.property_id);
-        });
-
-        res.json(workspaces);
+    if (!workspaces || workspaces.length === 0) {
+      return res.status(404).json({ message: "No workspaces found" });
     }
-    catch(err){
-        console.error(err);
-    }
+
+    const propertyIds = workspaces.map(ws => ws._id);
+    const properties = await Property.find({ _id: { $in: propertyIds } });
+
+    // Map property_id → Address_line1
+    const pMap = new Map();
+    properties.forEach(p => {
+      pMap.set(p._id, p.Address_line1);
+    });
+
+    const result = workspaces.map(ws => ({
+      ...ws.toObject(),
+      Address: pMap.get(ws._id) || "",
+    }));
+
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to get data", error: err.message });
+  }
 }
 
 module.exports = getFourData;

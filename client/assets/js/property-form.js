@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 const typeValue = urlParams.get('type');
-const idValue = urlParams.get('id');
+const idValue = urlParams.get('ownerId');
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_NO_OF_FILES = 3;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         //sessionStorage.removeItem("propertyData");
 
         //build form with pre-filled Data
-        property_id = propertyData.property_id
+        property_id = propertyData._id
         document.getElementById("p-name").value = propertyData.name;
         document.getElementById("p-street").value = propertyData.Address_line1;
         document.getElementById("p-city").value = propertyData.city;
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
         if(propertyData.Facilities.length !== 0) {
             propertyData.Facilities.forEach(fc => {
-                if(fc.facility_id === 1){
+                if(fc.facility_id.name === 'Parking'){
                     document.getElementById("p-parking").checked = true; 
                 }
-                if(fc.facility_id === 2) {
+                if(fc.facility_id.name === 'Public Transport') {
                     document.getElementById("p-transport").checked = true; 
                 }
             })

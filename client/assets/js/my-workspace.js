@@ -13,19 +13,19 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const propertyCountEl = document.getElementById('property-count');
   propertyCountEl.innerText = `${data.workspaces.length} Properties Available`;
 
-  data.workspaces.forEach(d => {
+  data.workspaces.forEach(workspace => {
     const card = document.createElement('div');
     card.classList.add('card');
 
     card.innerHTML = `
       <div class="card-image">
-          <img src=${d.pictures[0]} alt="">
+          <img src=${workspace.pictures[0]} alt="">
       </div>
       <div class="card-content">
           <div class="content-part-1">
               <div class="address-holder content-holder">
-                  <p>${d.address}</p>
-                  <span class="extra-text">${d.city}, ${d.province}, ${d.postal_code}</span>
+                  <p>${workspace.address}</p>
+                  <span class="extra-text">${workspace.city}, ${workspace.province}, ${workspace.postal_code}</span>
               </div>
           </div>
           <div class="content-part-2 justify-content-center">
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         </div>
         
         <ul class="dd-menu hide">
-          <li><button class="edit-btn" id="edit-btn" data-id=${d.workspace_id}>Edit</button></li>
-          <li><button class="delete-btn" id="delete-btn" data-id=${d.workspace_id}>Delete</button></li>
+          <li><button class="edit-btn" id="edit-btn" data-id=${workspace._id}>Edit</button></li>
+          <li><button class="delete-btn" id="delete-btn" data-id=${workspace._id}>Delete</button></li>
         </ul>
       </div>
     `;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches("#view-detail-btn")) {
-        //window.location.href = `property-view/${property.property_id}`;
+        window.location.href = `/workspace-view/${workspace._id}`;
         return;
       }
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
       if (e.target.matches("#edit-btn")) {
         const id = Number(e.target.dataset.id);
-        const workspaceData = data.workspaces.find(ws => ws.workspace_id === id);
+        const workspaceData = data.workspaces.find(ws => ws._id === id);
         console.log(workspaceData);
         sessionStorage.setItem("workspaceData", JSON.stringify(workspaceData));
         window.location.href = `/workspace-form?type=edit&id=${property_id}&ws=${id}`

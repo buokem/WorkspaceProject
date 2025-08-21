@@ -1,44 +1,36 @@
-const fs = require('fs').promises;
-const path = require('path');
+const Workspace = require("../../models/Workspace");
+const Property = require("../../models/Property");
 
 async function getSearchData(req, res) {
+  try {
+    const searchQuery = req.query.query;
+    if (!searchQuery) return res.status(400).json({ error: "Query is required" });
 
-    try{
-        const searchQuery = req.query.query;
-        const databaseFilePath = path.join(__dirname, "../../data/database.json");
-        
-        let content = await fs.readFile(databaseFilePath, 'utf-8');
-        content = JSON.parse(content);
+    const workspaces = await Workspace.find().lean();
 
-        //get address for each property
-        const pMap = new Map();
-        let properties = content["propertyData"];
-        properties.forEach(p => {
-            if(!pMap.has(p.property_id)){
-                pMap.set(p.property_id, `${p.Address_line1}, ${p.city}, ${p.province}`)
-            }
-        });
+    const propertyIds = workspaces.map(ws => ws.property_id);
+    const properties = await Property.find({ _id: { $in: propertyIds } }).lean();
 
-        let workspaces = content["workspaceData"];
-        let searchResult = [];
-        workspaces.forEach(el => {
-            el["Address"] = pMap.get(el.property_id);
-            //if workspace name has search string, return workspace
-            if(el.name.toLowerCase().includes(searchQuery.toLowerCase())) searchResult.push(el);
-            else if(el["Address"].toLowerCase().includes(searchQuery.toLowerCase())) searchResult.push(el);
-        });
+    // Map property_id → Address
+    const pMap = new Map();
+    properties.forEach(p => {
+      pMap.set(p.property_id, `${p.Address_line1}, ${p.city}, ${p.province}`);
+    });
 
-        if(searchResult.length > 4) {
-            searchResult = searchResult.slice(0, 4);
-        }
+    let searchResult = workspaces
+      .map(ws => ({ ...ws, Address: pMap.get(ws.property_id) || "" }))
+      .filter(ws => 
+        ws.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        ws.Address.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
+    searchResult = searchResult.slice(0, 4);
 
-        res.json(searchResult);
-    }
-    catch(err) {
-        console.error(err);
-    }
-    
+    res.json(searchResult);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message || "Server error." });
+  }
 }
 
-module.exports = getSearchData
+module.exports = getSearchData;
