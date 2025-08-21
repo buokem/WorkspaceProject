@@ -9,13 +9,11 @@ async function editWorkspace(req, res) {
     const propertyID = req.query.propertyID;
     const userID = req.user.id;
 
-    // Kiểm tra quyền truy cập property
     const property = await Property.findOne({ property_id: propertyID, owner_id: userID });
     if (!property) return res.status(404).json({ message: "Can't access data" });
 
     let pictures = null;
 
-    // Lấy dữ liệu edit từ body
     const {
       name,
       desc,
@@ -31,16 +29,13 @@ async function editWorkspace(req, res) {
       workspace_id
     } = req.body;
 
-    // Lấy ảnh mới
     if (req.files.length !== 0) {
       pictures = req.files.map(file => "/" + file.filename);
     }
 
-    // Tìm workspace
     const workspace = await Workspace.findOne({ workspace_id: workspace_id, property_id: propertyID });
     if (!workspace) return res.status(404).json({ message: `No workspace with id ${workspace_id}` });
 
-    // Cập nhật fields
     workspace.name = name;
     workspace.size = Number(size);
     workspace.capacity = Number(seats);
@@ -53,7 +48,6 @@ async function editWorkspace(req, res) {
 
     await workspace.save();
 
-    // Cập nhật workspace facilities
     await WorkspaceFacility.deleteMany({ workspace_id: workspace_id });
 
     const workspaceFacilityArray = [];

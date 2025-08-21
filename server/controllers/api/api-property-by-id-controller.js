@@ -4,7 +4,6 @@ async function getPropertyById(req, res) {
   try {
     const id = req.params.id;
 
-    // Tìm property theo property_id
     const property = await Property.findOne({ _id: id });
 
     if (!property) {
@@ -13,7 +12,6 @@ async function getPropertyById(req, res) {
         .json({ error: `Property with ID ${id} doesn't exist` });
     }
 
-    // Gửi về frontend
     res.json(property);
   } catch (err) {
     console.error(err);

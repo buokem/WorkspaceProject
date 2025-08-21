@@ -2,9 +2,8 @@ const Workspace = require("../../models/Workspace");
 
 async function getPropertyWorkspaceById(req, res) {
   try {
-    const property_id = req.params.id; // giữ type string giống property_id trong DB
+    const property_id = req.params.id;
 
-    // Tìm tất cả workspace của property này
     const workspaces = await Workspace.find({ property_id });
 
     if (!workspaces || workspaces.length === 0) {
@@ -13,7 +12,6 @@ async function getPropertyWorkspaceById(req, res) {
         .json({ error: `Workspaces for property ID ${property_id} don't exist` });
     }
 
-    // Gửi về frontend
     res.json(workspaces);
   } catch (err) {
     console.error(err);

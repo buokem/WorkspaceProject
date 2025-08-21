@@ -6,10 +6,8 @@ async function getSearchData(req, res) {
     const searchQuery = req.query.query;
     if (!searchQuery) return res.status(400).json({ error: "Query is required" });
 
-    // Lấy tất cả workspace và populate property_id để lấy địa chỉ
-    const workspaces = await Workspace.find().lean(); // lean() trả về plain object
+    const workspaces = await Workspace.find().lean();
 
-    // Lấy tất cả property liên quan
     const propertyIds = workspaces.map(ws => ws.property_id);
     const properties = await Property.find({ _id: { $in: propertyIds } }).lean();
 
@@ -19,7 +17,6 @@ async function getSearchData(req, res) {
       pMap.set(p.property_id, `${p.Address_line1}, ${p.city}, ${p.province}`);
     });
 
-    // Lọc workspace theo tên hoặc địa chỉ chứa searchQuery (case-insensitive)
     let searchResult = workspaces
       .map(ws => ({ ...ws, Address: pMap.get(ws.property_id) || "" }))
       .filter(ws => 
@@ -27,7 +24,6 @@ async function getSearchData(req, res) {
         ws.Address.toLowerCase().includes(searchQuery.toLowerCase())
       );
 
-    // Chỉ lấy tối đa 4 kết quả
     searchResult = searchResult.slice(0, 4);
 
     res.json(searchResult);

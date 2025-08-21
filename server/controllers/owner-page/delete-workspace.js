@@ -8,15 +8,12 @@ async function deleteWorkspace(req, res) {
     const propertyID = req.query.propertyID;
     const userID = req.user.id;
 
-    // Kiểm tra quyền truy cập property
     const property = await Property.findOne({ property_id: propertyID, owner_id: userID });
     if (!property) return res.status(404).json({ message: "Can't access data" });
 
-    // Xóa workspace
     const deleted = await Workspace.findOneAndDelete({ workspace_id: workspaceID, property_id: propertyID });
     if (!deleted) return res.status(404).json({ message: "Workspace not found" });
 
-    // Xóa luôn các facility liên quan
     await WorkspaceFacility.deleteMany({ workspace_id: workspaceID });
 
     return res.status(200).json({ message: "Delete successful" });

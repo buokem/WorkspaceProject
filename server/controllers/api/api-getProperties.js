@@ -5,7 +5,6 @@ async function getProperties(req, res) {
   try {
     const ownerId = req.params.id;
 
-    // Lấy tất cả property của owner
     const properties = await Property.find({ owner_id: ownerId });
 
     if (!properties || properties.length === 0) {
@@ -14,7 +13,6 @@ async function getProperties(req, res) {
         .json({ error: `Properties with owner id ${ownerId} don't exist` });
     }
 
-    // Lấy property facilities cho mỗi property
     const dataWithFacilities = await Promise.all(
       properties.map(async property => {
         const facilities = await PropertyFacility.find({ property_id: property._id }).populate('facility_id');

@@ -8,7 +8,6 @@ async function deleteProperty(req, res) {
       return res.status(400).json({ message: "Property ID is required" });
     }
 
-    // Find and delete by property_id (nếu mày đang lưu UUID trong field property_id)
     const deleted = await Property.findOneAndDelete({ _id: id });
 
     if (!deleted) {
@@ -19,7 +18,7 @@ async function deleteProperty(req, res) {
 
     return res.status(200).json({
       message: "Delete successful",
-      deletedProperty: deleted, // optional: return thông tin property vừa xóa
+      deletedProperty: deleted,
     });
   } catch (err) {
     console.error(err);

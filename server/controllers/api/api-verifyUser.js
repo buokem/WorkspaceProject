@@ -9,12 +9,10 @@ async function verifyUser(req, res) {
     if (!email) return res.status(400).json({ error: 'Email is required' });
     if (!password) return res.status(400).json({ error: 'Password is required' });
 
-    // Tìm user theo email
     const user = await User.findOne({ email });
 
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    // So sánh password (nếu dùng bcrypt thì thay đổi ở đây)
     if (user.password !== password) {
       return res.status(400).json({ error: "Wrong credentials, try again" });
     }

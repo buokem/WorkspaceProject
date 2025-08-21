@@ -8,11 +8,9 @@ async function createWorkspace(req, res) {
 
     const propertyID = req.query.propertyID;
 
-    // Kiểm tra quyền truy cập property
     const property = await Property.findOne({ _id: propertyID, owner_id: req.user.id });
     if (!property) return res.status(404).json({ message: "Can't access data" });
 
-    // Lấy dữ liệu từ body
     const {
       name,
       desc,
@@ -27,12 +25,10 @@ async function createWorkspace(req, res) {
       available,
     } = req.body;
 
-    // Tạo array picture
     const pictures = req.files.map(file => "/" + file.filename);
 
-    // Tạo workspace mới
     const newWorkspace = new Workspace({
-      workspace_id: Date.now(), // hoặc mày có thể dùng auto-increment khác
+      workspace_id: Date.now(),
       property_id: propertyID,
       name,
       size: Number(size),
@@ -48,7 +44,6 @@ async function createWorkspace(req, res) {
 
     await newWorkspace.save();
 
-    // Tạo workspace facilities
     const workspaceFacilityArray = [];
     if (smoking === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 4));
     if (projector === "on") workspaceFacilityArray.push(createNewWorkspaceFacility(newWorkspace.workspace_id, 5));
