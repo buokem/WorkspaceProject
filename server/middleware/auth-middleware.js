@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
  */
 
 //set roles to empty array and redirect to login as default parameters
-function auth({ roles = [], redirectTo = '/authentication/login'}) {
+function auth({ roles = [], redirectTo = '/WorkspaceProject/signin-signup.html?type=login'}) {
     //return a middleware function
     return function (req, res, next) {
         try {
@@ -57,7 +57,7 @@ function auth({ roles = [], redirectTo = '/authentication/login'}) {
 }
 
 function redirect(res, to, reason) {
-    const url = new URL(to, 'http://localhost:3000');
+    const url = new URL(to, 'https://buokem.github.io');
     //set reason and returnTo paths
     url.searchParams.set('reason', reason);
     // 302 redirect
