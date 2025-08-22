@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // LogInbtn
     document.getElementById("loginBtn").addEventListener("click", function () {
-        window.location.href = `/authentication/login`
+        window.location.href = `/signin-signup.html`
     });
 
     //Sign Up btn
