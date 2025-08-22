@@ -192,13 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
   async function redirectUserUsingRole(id, role, token) {
 
     if (role === "coworker") {
-      window.location.assign('/coworker');
+      window.location.assign('/WorkspaceProject/coWorkerMain.html');
       return;
     }
 
     if (role === "owner") {
       console.log(role, id)
-      window.location.assign(`/owner?id=${id}`);
+      window.location.assign(`/WorkspaceProject/owner-main.html?id=${id}`);
       return;
     }
   }
