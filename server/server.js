@@ -40,17 +40,16 @@ app.use(express.json());
 app.use(cookieParser());
 
 const allowedOrigins = new Set([
-   'https://buokem.github.io', 
+  'https://buokem.github.io',
 ]);
 
 app.use(cors({
   origin(origin, cb) {
-    // allow tools and local file:// with no origin
-    if (!origin) return cb(null, true);
-    const ok = allowedOrigins.some(a => origin.startsWith(a));
-    cb(ok ? null : new Error('CORS blocked'), ok);
+    if (!origin) return cb(null, true);         
+    if (allowedOrigins.has(origin)) return cb(null, true);
+    return cb(new Error('CORS blocked'));
   },
-  credentials: true // set true only if you use cookies
+  credentials: true, // only if you're using cookies
 }));
 
 //middleware to set the static folder
