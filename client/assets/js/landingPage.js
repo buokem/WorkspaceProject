@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             };
             const target = data[i]
-            el.querySelector('.card-box').style.backgroundImage = `url(${target.pictures[0]})`;
+            el.querySelector('.card-box').style.backgroundImage = `url(https://watchspaces.onrender.com/pictures${target.pictures[0]})`;
             el.querySelector('h3').innerText = target.name;
             el.querySelector('p').innerText = target.Address
         });

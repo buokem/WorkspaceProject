@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   propertyNameEl.innerText = theProperty.name;
 
   const mainImage = document.querySelector('.main-image');
-  mainImage.style.backgroundImage = `url(${theProperty.pictures[0]})`;
+  mainImage.style.backgroundImage = `url(https://watchspaces.onrender.com/pictures${theProperty.pictures[0]})`;
 
   document.querySelectorAll('.sub-image').forEach((el, i) => {
-    el.style.backgroundImage = `url(${theProperty.pictures[i]})`;
+    el.style.backgroundImage = `url(https://watchspaces.onrender.com/pictures${theProperty.pictures[i]})`;
 
     el.addEventListener('click', (e) => {
       mainImage.style.backgroundImage = e.currentTarget.style.backgroundImage;

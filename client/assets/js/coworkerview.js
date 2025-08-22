@@ -87,11 +87,11 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
     document.querySelector('.content-title').innerText = appData["name"];
     document.querySelector('.description-block p').innerText = appData["description"];
-    mainImage.style.backgroundImage = `url(${appData["pictures"][0]})`;
+    mainImage.style.backgroundImage = `url(https://watchspaces.onrender.com/pictures${appData["pictures"][0]})`;
 
     //build images
     document.querySelectorAll('.sub-image').forEach((el, i)=> {
-        el.style.backgroundImage =  `url(${appData["pictures"][i]})`;
+        el.style.backgroundImage =  `url(https://watchspaces.onrender.com/pictures${appData["pictures"][i]})`;
 
         el.addEventListener("click", (e)=> {
             mainImage.style.backgroundImage = e.currentTarget.style.backgroundImage;
