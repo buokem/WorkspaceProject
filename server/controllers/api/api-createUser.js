@@ -35,11 +35,20 @@ async function createUser(req, res) {
       { expiresIn: "15m", issuer: "watchspaces" }
     );
 
+    res.cookie('session', token, {
+      httpOnly: true,
+      secure: true,       
+      sameSite: 'None',   // cross-site (github.io -> onrender.com)
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24
+    });
+
     return res.status(201).json({
       message: "User created.",
       user: { id: newUser._id, email, role },
       token,
     });
+
   } catch (err) {
     console.error(err);
     return res

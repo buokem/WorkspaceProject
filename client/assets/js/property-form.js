@@ -197,7 +197,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 `/api/createProperty`,
                 {
                     method: `${method}`,
-                    body: propertyData
+                    body: propertyData,
+                    credentials:"include"
                 }
             );
 

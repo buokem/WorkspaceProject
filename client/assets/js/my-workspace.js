@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
   const contentContainer = document.getElementById('content');
   const propertyCountEl = document.getElementById('property-count');
-  propertyCountEl.innerText = `${data.workspaces.length} Properties Available`;
+  propertyCountEl.innerText = `${data.workspaces.length} Workspaces Available`;
 
   data.workspaces.forEach((workspace, i) => {
     const card = document.createElement('div');
@@ -101,7 +101,8 @@ async function fetchApi(API, method = "GET", body = null) {
       method,
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      credentials:"include"
     };
 
     if (method !== "GET" && body) {

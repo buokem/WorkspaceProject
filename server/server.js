@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 //import files
@@ -38,8 +39,23 @@ app.use(express.json());
 //middleware to parse cookies
 app.use(cookieParser());
 
+// const allowedOrigins = new Set([
+//   'https://YOUR_GH_USER.github.io',  // ✅ correct for project pages
+//   // 'https://your.custom.domain'     // add if you later use a custom domain
+// ]);
+
+app.use(cors({
+  origin(origin, cb) {
+    // allow tools and local file:// with no origin
+    if (!origin) return cb(null, true);
+    const ok = allowedOrigins.some(a => origin.startsWith(a));
+    cb(ok ? null : new Error('CORS blocked'), ok);
+  },
+  credentials: true // set true only if you use cookies
+}));
+
 //middleware to set the static folder
-app.use(express.static(path.join(__dirname, '../client/assets')));
+//app.use(express.static(path.join(__dirname, '../client/assets')));
 app.use(express.static(path.join(__dirname, './pictures')));
 
 //middleware for api's
@@ -57,23 +73,23 @@ app.use('/api/getworkspaces', auth({roles:['owner']}), getWorkspacesForPropertyR
 
 //middleware for pages
 //home pages
-app.use('/', getHomePageRouter);
+// app.use('/', getHomePageRouter);
 
-//sign in page
-app.use('/authentication', getAuthPageRouter);
+// //sign in page
+// app.use('/authentication', getAuthPageRouter);
 
-//coworker pages
-app.use('/coworker', auth({roles:['coworker']}), getCoWorkerPageRouter);
-app.use('/workspace-view', auth({roles:['coworker', 'owner']}), getCoWorkerViewPageRouter);
+// //coworker pages
+// app.use('/coworker', auth({roles:['coworker']}), getCoWorkerPageRouter);
+// app.use('/workspace-view', auth({roles:['coworker', 'owner']}), getCoWorkerViewPageRouter);
 
-//owner pages
-app.use('/owner', auth({roles:['owner']}), getOwnerPageRouter);
-app.use('/property-view', auth({roles:['owner']}), getPropertyViewRouter);
-app.use('/my-workspace', auth({roles:['owner']}), getMyWorkSpaceRouter);
+// //owner pages
+// app.use('/owner', auth({roles:['owner']}), getOwnerPageRouter);
+// app.use('/property-view', auth({roles:['owner']}), getPropertyViewRouter);
+// app.use('/my-workspace', auth({roles:['owner']}), getMyWorkSpaceRouter);
 
-//create and edit 
-app.use('/property-form', auth({roles:['owner']}), getPropertyFormRouter);
-app.use('/workspace-form', auth({roles:['owner']}), getWorkspaceFormRouter);
+// //create and edit 
+// app.use('/property-form', auth({roles:['owner']}), getPropertyFormRouter);
+// app.use('/workspace-form', auth({roles:['owner']}), getWorkspaceFormRouter);
 
 console.log('🚀 ~ process.env.MONGO_URI:', process.env.MONGO_URI)
 mongoose.connect(process.env.MONGO_URI, {

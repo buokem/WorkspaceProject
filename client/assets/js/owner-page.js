@@ -120,6 +120,7 @@ async function fetchApi(API, method = 'GET', body = null) {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include'
     };
 
     if (method !== 'GET' && body) {

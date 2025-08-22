@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const workspaceMap = createWorkspaceMap(workspaceData);
 
+    console.log(propertyData, workspaceData)
+
     const propertyFacilityMap = createPropertyFacilityMap(propertyFacility);
 
     const workspaceFacilityMap = createWorkspaceFacilityMap(workspaceFacility);
@@ -16,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const userName = userInfo.email.split("@")[0];
 
-    console.log(userName);
     
     let cardParent = grabHtmlByID('content');
     let searchInput = grabHtmlByID(`search-input`);
@@ -240,6 +241,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         //no items match your search
         data.forEach((ws, i) => {
             const workspaceProperty = propertyData.find(p => p._id === ws.property_id);
+            if(!workspaceProperty) return
             const div = document.createElement('div');
             div.classList.add('card');
             
@@ -384,6 +386,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     'Content-Type': content,
                     "Authorization": `Bearer ${token}`
                 },
+                credentials:"include"
             }
         );
         return response;

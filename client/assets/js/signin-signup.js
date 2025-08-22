@@ -147,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: {
           'Content-Type': "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
       }
     );
     return response;
@@ -186,12 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function redirectUserUsingRole(id, role, token) {
-    document.cookie = `token=${token}; Path=/; SameSite=Lax`;
 
     if (role === "coworker") {
       window.location.assign('/coworker');
       return;
     }
+
     if (role === "owner") {
       console.log(role, id)
       window.location.assign(`/owner?id=${id}`);

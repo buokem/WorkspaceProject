@@ -213,7 +213,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         `/api/createworkspace?propertyID=${idValue}`,
         {
           method: `${method}`,
-          body: propertyData
+          body: propertyData,
+          credentials:'include'
         }
       );
 

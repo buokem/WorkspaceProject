@@ -99,7 +99,7 @@ async function getPropertyWorkspace() {
 
 async function fetchApi(API) {
   try {
-    const response = await fetch(API);
+    const response = await fetch(API, {credentials:'include'});
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

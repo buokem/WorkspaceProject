@@ -30,11 +30,20 @@ async function verifyUser(req, res) {
       { expiresIn: '15m', issuer: 'watchspaces' }
     );
 
+    res.cookie('session', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',   // cross-site (github.io -> onrender.com)
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24
+    });
+
     return res.status(200).json({
       message: 'Successful LogIn',
       user: { id, email, role },
       token
     });
+    
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message || "Server error." });
