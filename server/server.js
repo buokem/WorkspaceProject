@@ -39,10 +39,9 @@ app.use(express.json());
 //middleware to parse cookies
 app.use(cookieParser());
 
-// const allowedOrigins = new Set([
-//   'https://YOUR_GH_USER.github.io',  // ✅ correct for project pages
-//   // 'https://your.custom.domain'     // add if you later use a custom domain
-// ]);
+const allowedOrigins = new Set([
+   'https://buokem.github.io/WorkspaceProject/',  // ✅ correct for project pages
+]);
 
 app.use(cors({
   origin(origin, cb) {
