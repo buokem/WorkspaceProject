@@ -58,6 +58,9 @@ app.use(cors({
 //app.use(express.static(path.join(__dirname, '../client/assets')));
 app.use(express.static(path.join(__dirname, './pictures')));
 
+// Health route for Render
+app.get('/', (_req, res) => res.status(200).send('OK'));
+
 //middleware for api's
 app.use('/api/database', auth({roles:['coworker', 'owner']}), getDatabaseRouter);
 app.use('/api/coworkerview', auth({roles:['coworker', 'owner']}), getCoWorkerByID);
