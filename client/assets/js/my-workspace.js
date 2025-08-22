@@ -1,12 +1,15 @@
-const property_id = window.location.pathname.split("/")[2];
+//const property_id = window.location.pathname.split("/")[2];
+
+const urlParams = new URLSearchParams(window.location.search);
+const property_id = urlParams.get('propertyID');
 
 document.addEventListener('DOMContentLoaded', async (e) => {
   const data = await fetchApi(`https://watchspaces.onrender.com/api/getworkspaces?propID=${property_id}`);
 
   document.getElementById('add-workspace').addEventListener('click', (e) => {
-    window.location.href = `/workspace-form?type=create&id=${property_id}`
+    window.location.href = `/WorkspaceProject/workspace-form.html?type=create&id=${property_id}`
   });
-
+  
   const userInfo = JSON.parse(sessionStorage.getItem("watchspaceUser"));
 
   const userName = userInfo.email.split("@")[0];
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches("#view-detail-btn")) {
-        window.location.href = `/workspace-view/${workspace._id}`;
+        window.location.href = `/WorkspaceProject/coWorkerView.html?workspaceID=${workspace._id}`;
         return;
       }
 
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         const workspaceData = data.workspaces.find(ws => ws._id === id);
         console.log(id, workspaceData);
         sessionStorage.setItem("workspaceData", JSON.stringify(workspaceData));
-        window.location.href = `/workspace-form?type=edit&id=${property_id}&ws=${id}`
+        window.location.href = `/WorkspaceProject/workspace-form.html?type=edit&id=${property_id}&ws=${id}`
       }
 
       if (e.target.matches("#delete-btn")) {
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
           console.log(res);
 
           if (res.message.toLowerCase().trim() === "delete successful") {
-            window.location.href = `/my-workspace/${property_id}`
+            window.location.href = `/WorkspaceProject/my-workspace.html?propertyID=${property_id}`
           }
         }
       }

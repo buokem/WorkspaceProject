@@ -1,5 +1,8 @@
 
-const property_id = window.location.pathname.split('/')[2];
+//const property_id = window.location.pathname.split('/')[2];
+
+const urlParams = URLSearchParams(window.location.search)
+const property_id = urlParams.get('propertyID')
 
 document.addEventListener('DOMContentLoaded', async () => {
   const propertyNameEl = document.querySelector('#property-name');
@@ -25,10 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  document.getElementById("view-workspace").addEventListener('click', async (e) => {
-    window.location.href = `/my-workspace/${property_id}`
-  })
-
   const tagParent = document.querySelector('.details-block .tag-holder');
 
   const detailMap = {
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   viewWorkspaceBtn.addEventListener('click', () => {
     const propertyId = getPropertyIdFromPath();
-    window.location.href = `/my-workspace/${propertyId}`;
+    window.location.href = `/WorkspaceProject/my-workspace.html?propertyID=${propertyId}`;
   })
 });
 

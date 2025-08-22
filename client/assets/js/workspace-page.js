@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addWorkspaceBtn = document.querySelector('#add-workspace-btn');
   addWorkspaceBtn.addEventListener('click', () => {
-    window.location.href = '/workspace-form';
+    window.location.href = '/WorkspaceProject/workspace-form.html';
   });
 
   getPropertyWorkspace();

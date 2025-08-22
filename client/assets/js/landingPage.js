@@ -36,16 +36,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // LogInbtn
     document.getElementById("loginBtn").addEventListener("click", function () {
-        window.location.href = `/signin-signup.html`
+        window.location.href = `/WorkspaceProject/signin-signup.html?type=login`
     });
 
     //Sign Up btn
     document.getElementById("signupBtn").addEventListener("click", function () {
-        window.location.href = `/authentication/signup`
+        window.location.href = `/WorkspaceProject/signin-signup.html?type=signup`
     });
 
     document.querySelector('.browse-btn').addEventListener("click", () => {
-        window.location.href = `/authentication/login`
+        window.location.href = `/WorkspaceProject/signin-signup.html`
     });
 
     document.getElementById("subscribe-form").addEventListener("click", function () {

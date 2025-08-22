@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 const editResponse = await createProperty(formData, "PUT");
 
                 if(editResponse.message.toLowerCase().trim() === "edit successful"){
-                    window.location.href = `/owner?id=${idValue}`
+                    window.location.href = `/WorkspaceProject/owner-main.html?id=${idValue}`
                 }
                 else{
                     alert("Failed to edit property, please try again")
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             console.log(serverResponse);
 
             if(serverResponse.message.toLowerCase() === "property created"){
-                window.location.href = `/owner?id=${idValue}`;
+                window.location.href = `/WorkspaceProject/owner-main.html?id=${idValue}`;
             }
             else{
                 alert("Failed to create property, please try again")

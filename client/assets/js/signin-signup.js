@@ -1,8 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  const splitURL = window.location.href.split('/');
-  let currentAuth = splitURL[splitURL.length - 1];
+  //const splitURL = window.location.href.split('/');
+  //let currentAuth = splitURL[splitURL.length - 1];
 
+  const urlParams = new URLSearchParams(window.location.search);
+  let currentAuth = urlParams.get('type');
 
 
   const signUpTab = document.getElementById('sign-up-tab');
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (currentAuth === 'login') {
     blockSignUpTab();
   }
+
   else {
     blockSignInTab();
   }

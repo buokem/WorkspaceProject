@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const idValue = getQueryParamId();
   document.getElementById('add-property').addEventListener('click', (e) => {
-    window.location.href = `/property-form?type=create&ownerId=${idValue}`;
+    window.location.href = `/WorkspaceProject/property-form.html?type=create&ownerId=${idValue}`;
   });
 });
 
@@ -70,7 +70,7 @@ async function getProperty() {
 
     card.addEventListener('click', async (e) => {
       if (e.target.matches('.view-detail-btn')) {
-        window.location.href = `property-view/${property._id}`;
+        window.location.href = `/WorkspaceProject/property-view.html?propertyID=${property._id}`;
         return;
       }
 
@@ -86,7 +86,7 @@ async function getProperty() {
         );
         console.log(propertyData);
         sessionStorage.setItem('propertyData', JSON.stringify(propertyData));
-        window.location.href = `/property-form?type=edit&ownerId=${idValue}`;
+        window.location.href = `/WorkspaceProject/property-form.html?type=edit&ownerId=${idValue}`;
       }
 
       if (e.target.matches('#delete-btn')) {
@@ -100,7 +100,7 @@ async function getProperty() {
           console.log(res);
 
           if (res.message.toLowerCase().trim() === 'delete successful') {
-            window.location.href = `/owner?id=${idValue}`;
+            window.location.href = `/WorkspaceProject/owner-main.html?id=${idValue}`;
           }
         }
       }

@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const typeValue = urlParams.get('type');
 const idValue = urlParams.get('id');
-const workspace_id = urlParams.get('ws')
+const workspace_id = urlParams.get('ws');
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_NO_OF_FILES = 3;
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         const editResponse = await createWorkspace(formData, "PUT");
 
         if (editResponse.message.toLowerCase().trim() === "edit successful") {
-          window.location.href = `/my-workspace/${idValue}`
+          window.location.href = `/WorkspaceProject/my-workspace.html?propertyID=${idValue}`
         }
         else {
           alert("Failed to edit workspace, please try again")
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
       //back to workspace listing
       if (serverResponse.message.toLowerCase() === "workspace created") {
-        window.location.href = `/my-workspace/${idValue}`;
+        window.location.href = `/WorkspaceProject/my-workspace.html?propertyID=${idValue}`;
       }
       else {
         alert("Failed to create workspace, please try again")
