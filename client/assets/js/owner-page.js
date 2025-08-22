@@ -37,7 +37,7 @@ async function getProperty() {
 
     card.innerHTML = `
       <div class="card-image">
-          <img src=${property.pictures[0]} alt="">
+          <img src=https://watchspaces.onrender.com/pictures${property.pictures[0]} alt="">
       </div>
       <div class="card-content">
           <div class="content-part-1">

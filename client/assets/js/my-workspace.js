@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
     card.innerHTML = `
       <div class="card-image">
-          <img src=${workspace.pictures[0]} alt="">
+          <img src=https://watchspaces.onrender.com/pictures${workspace.pictures[0]} alt="">
       </div>
       <div class="card-content">
           <div class="content-part-1">
