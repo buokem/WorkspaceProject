@@ -156,8 +156,11 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 
     
     async function getData() {
-        const url = window.location.href.split('/');
-        const id = url[url.length - 1];
+        //const url = window.location.href.split('/');
+        //const id = url[url.length - 1];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('workspaceID')
 
         try {
             const token = localStorage.getItem('watchSpaceToken');
