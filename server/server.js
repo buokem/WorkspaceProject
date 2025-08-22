@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const allowedOrigins = new Set([
-   'https://buokem.github.io/WorkspaceProject/',  // ✅ correct for project pages
+   'https://buokem.github.io', 
 ]);
 
 app.use(cors({
