@@ -39,10 +39,9 @@ app.use(express.json());
 //middleware to parse cookies
 app.use(cookieParser());
 
-// const allowedOrigins = new Set([
-//   'https://YOUR_GH_USER.github.io',  // ✅ correct for project pages
-//   // 'https://your.custom.domain'     // add if you later use a custom domain
-// ]);
+const allowedOrigins = new Set([
+   'https://buokem.github.io/WorkspaceProject/',  // ✅ correct for project pages
+]);
 
 app.use(cors({
   origin(origin, cb) {
@@ -57,6 +56,9 @@ app.use(cors({
 //middleware to set the static folder
 //app.use(express.static(path.join(__dirname, '../client/assets')));
 app.use(express.static(path.join(__dirname, './pictures')));
+
+// Health route for Render
+app.get('/', (_req, res) => res.status(200).send('OK'));
 
 //middleware for api's
 app.use('/api/database', auth({roles:['coworker', 'owner']}), getDatabaseRouter);
