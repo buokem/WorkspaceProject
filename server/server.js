@@ -54,7 +54,13 @@ app.use(cors({
 
 //middleware to set the static folder
 //app.use(express.static(path.join(__dirname, '../client/assets')));
-app.use(express.static(path.join(__dirname, './pictures')));
+//app.use(express.static(path.join(__dirname, './pictures')));
+
+app.use('/pictures', express.static(path.join(__dirname, 'pictures'), {
+  setHeaders(res) {
+    res.set('Cache-Control', 'public, max-age=31536000, immutable');
+  }
+}));
 
 // Health route for Render
 app.get('/', (_req, res) => res.status(200).send('OK'));
