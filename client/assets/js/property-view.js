@@ -66,7 +66,7 @@ async function getPropertyById() {
 
   try {
     const token = localStorage.getItem('watchSpaceToken');
-    const response = await fetch(`/api/property/${id}`, {
+    const response = await fetch(`https://watchspaces.onrender.com/api/property/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

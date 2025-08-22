@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function submitUser(data) {
     try {
-      const response = await fetchData(`/api/auth/createuser`, data);
+      const response = await fetchData(`https://watchspaces.onrender.com/api/auth/createuser`, data);
 
       if (!response.ok) {
         await handleErrorResponse(response);
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loginUser(data) {
     try {
-      const response = await fetchData(`/api/auth/verifyuser`, data);
+      const response = await fetchData(`https://watchspaces.onrender.com/api/auth/verifyuser`, data);
 
       if (!response.ok) {
         handleErrorResponse(response);

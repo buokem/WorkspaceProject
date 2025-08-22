@@ -95,7 +95,7 @@ async function getProperty() {
         const confirmed = confirm('Are you sure you want to delete this?');
 
         if (confirmed) {
-          const res = await fetchApi('/api/createProperty', 'DELETE', { id });
+          const res = await fetchApi('https://watchspaces.onrender.com/api/createProperty', 'DELETE', { id });
 
           console.log(res);
 

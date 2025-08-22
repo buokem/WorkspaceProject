@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     //change this to get token
-    const appData = await fetchApi('/api/database', "json");
+    const appData = await fetchApi('https://watchspaces.onrender.com/api/database', "json");
 
     const {workspaceData, propertyData, facilityData, workspaceFacility, propertyFacility, userInfo} = appData;
 

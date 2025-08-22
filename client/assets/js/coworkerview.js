@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         try {
             const token = localStorage.getItem('watchSpaceToken');
             const response = await fetch(
-                `/api/coworkerview/${id}`,
+                `https://watchspaces.onrender.com/api/coworkerview/${id}`,
                 {
                     method: "GET",
                     headers:{

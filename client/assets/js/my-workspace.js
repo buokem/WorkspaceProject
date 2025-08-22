@@ -1,7 +1,7 @@
 const property_id = window.location.pathname.split("/")[2];
 
 document.addEventListener('DOMContentLoaded', async (e) => {
-  const data = await fetchApi(`/api/getworkspaces?propID=${property_id}`);
+  const data = await fetchApi(`https://watchspaces.onrender.com/api/getworkspaces?propID=${property_id}`);
 
   document.getElementById('add-workspace').addEventListener('click', (e) => {
     window.location.href = `/workspace-form?type=create&id=${property_id}`
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         const id = e.target.dataset.id;
         const confirmed = confirm("Are you sure you want to delete this?");
         if (confirmed) {
-          const res = await fetchApi(`/api/createworkspace?propertyID=${property_id}`, "DELETE", { id });
+          const res = await fetchApi(`https://watchspaces.onrender.com/api/createworkspace?propertyID=${property_id}`, "DELETE", { id });
 
           console.log(res);
 

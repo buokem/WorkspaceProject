@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         try{
             console.log("creating Property")
             const response = await fetch(
-                `/api/createProperty`,
+                `https://watchspaces.onrender.com/api/createProperty`,
                 {
                     method: `${method}`,
                     body: propertyData,

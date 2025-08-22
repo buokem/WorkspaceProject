@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     try {
       console.log("creating workspace")
       const response = await fetch(
-        `/api/createworkspace?propertyID=${idValue}`,
+        `https://watchspaces.onrender.com/api/createworkspace?propertyID=${idValue}`,
         {
           method: `${method}`,
           body: propertyData,

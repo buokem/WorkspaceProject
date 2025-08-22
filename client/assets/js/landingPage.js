@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     // get Data
-    let appData = await fetchWorkspace('/api/homepage');
+    let appData = await fetchWorkspace('https://watchspaces.onrender.com/api/homepage');
 
     //build cards
     function buildCards(data) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (input.trim() === "") {
             alert("Please enter a keyword to search.");
         } else {
-            appData = await fetchWorkspace(`/api/search?query=${encodeURIComponent(input)}`);
+            appData = await fetchWorkspace(`https://watchspaces.onrender.com/api/search?query=${encodeURIComponent(input)}`);
             console.log(appData)
             buildCards(appData);
         }
