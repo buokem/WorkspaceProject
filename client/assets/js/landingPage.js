@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     document.querySelector('.browse-btn').addEventListener("click", () => {
-        window.location.href = `/WorkspaceProject/signin-signup.html`
+        window.location.href = `/WorkspaceProject/signin-signup.html?type=login`
     });
 
     document.getElementById("subscribe-form").addEventListener("click", function () {
